@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Reset &mdash; Blog</title>
+  <title>{{ __('Reset') }} &mdash; {{ __('Blog') }}</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap/css/bootstrap.min.css') }}">
@@ -37,16 +37,16 @@
             </div>
 
             <div class="card card-primary">
-              <div class="card-header"><h4>Reset Password</h4></div>
+              <div class="card-header"><h4>{{ __('Reset Password') }}</h4></div>
               <div class="card-body">
-                <p>You can set a new password below</p>
+                <p>{{ __('You can set a new password below') }}</p>
                 @if(session()->has('success'))
                     <i><b style="color: green;">{{ session()->get('success') }}</b></i>
                 @endif
                 <form method="POST" action="{{ route('admin.reset-password.send') }}" class="needs-validation" novalidate="">
                     @csrf
                   <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">{{ __('Email') }}</label>
                     <input id="email" type="email" class="form-control" name="email"
                      tabindex="1" required autofocus value="{{ @request()->email }}">
                     <input id="token" type="hidden" class="form-control" name="token"
@@ -55,32 +55,32 @@
                         <code>{{ $message }}</code>
                     @enderror
                     <div class="invalid-feedback">
-                      Please fill in your email
+                      {{ __('Please fill in your email') }}
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="password">New Password</label>
+                    <label for="password">{{ __('New Password') }}</label>
                     <input id="password" type="password" class="form-control" name="password" tabindex="1" required autofocus>
                     @error('password')
                         <code>{{ $message }}</code>
                     @enderror
                     <div class="invalid-feedback">
-                      Please fill in your Password
+                      {{ __('Please fill in your Password') }}
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="password">Confirm Password</label>
+                    <label for="password">{{ __('Confirm Password') }}</label>
                     <input id="password" type="password" class="form-control" name="password_confirmation" tabindex="1" required autofocus>
                     <div class="invalid-feedback">
-                      Please fill in your confirmation Password
+                      {{ __('Please fill in your confirmation Password') }}
                     </div>
                   </div>
 
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                      Reset
+                      {{ __('Reset') }}
                     </button>
                   </div>
                 </form>
@@ -88,7 +88,7 @@
               </div>
             </div>
             <div class="simple-footer">
-              Copyright &copy; Dtoolz Blog
+              {{ __('Copyright') }} &copy; {{ __('Dtoolz Blog') }}
             </div>
           </div>
         </div>

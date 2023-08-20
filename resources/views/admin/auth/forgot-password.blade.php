@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Forgot Password &mdash; Blog</title>
+  <title>{{ __('Forgot Password') }} &mdash; {{ __('Blog') }}</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap/css/bootstrap.min.css') }}">
@@ -37,28 +37,28 @@
             </div>
 
             <div class="card card-primary">
-              <div class="card-header"><h4>Forgot Password</h4></div>
+              <div class="card-header"><h4>{{ __('Forgot Password') }}</h4></div>
               <div class="card-body">
-                <p>Forgot your password? Provide your email to get a password reset link.</p>
+                <p>{{ __('Forgot your password? Provide your email to get a password reset link.') }}</p>
                 @if(session()->has('success'))
                     <i><b style="color: green;">{{ session()->get('success') }}</b></i>
                 @endif
                 <form method="POST" action="{{ route('admin.forgot-password.send') }}" class="needs-validation" novalidate="">
                     @csrf
                   <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">{{ __('Email') }}</label>
                     <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
                     @error('email')
                         <code>{{ $message }}</code>
                     @enderror
                     <div class="invalid-feedback">
-                      Please fill in your email
+                      {{ __('Please fill in your email') }}
                     </div>
                   </div>
 
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                      Send Link
+                      {{ __('Send Link') }}
                     </button>
                   </div>
                 </form>
@@ -66,7 +66,7 @@
               </div>
             </div>
             <div class="simple-footer">
-              Copyright &copy; Dtoolz Blog
+              {{ __('Copyright') }} &copy; {{ __('Dtoolz Blog') }}
             </div>
           </div>
         </div>

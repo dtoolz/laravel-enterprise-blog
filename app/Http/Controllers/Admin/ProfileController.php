@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminProfileUpdateRequest;
+use App\Http\Requests\AdminUpdatePasswordRequest;
 use App\Models\Admin;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class ProfileController extends Controller
 {
@@ -68,6 +70,15 @@ class ProfileController extends Controller
         $admin->save();
 
         return redirect()->back();
+    }
+     //handles admin password update
+    public function passwordUpdate(AdminUpdatePasswordRequest $request, string $id)
+    {
+          $admin = Admin::findOrFail($id);
+          $admin->password = bcrypt($request->password);
+          $admin->save();
+
+          return redirect()->back();
     }
 
     /**

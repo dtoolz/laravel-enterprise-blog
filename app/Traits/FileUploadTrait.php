@@ -7,7 +7,7 @@ use File;
 
 trait FileUploadTrait
 {
-    public function handleFileUpload(Request $request, string $fieldName, ?string $oldPath = null, string $dir = 'uploads') : String
+    public function handleFileUpload(Request $request, string $fieldName, ?string $oldPath = null, string $dir = 'uploads') : ?String
     {
 
         if(!$request->hasFile($fieldName))

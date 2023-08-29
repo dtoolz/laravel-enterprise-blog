@@ -3,20 +3,79 @@
 @section('content')
     <div class="section">
         <div class="section-header">
-            <h1>Languages</h1>
+            <h1>{{__('Languages')}}</h1>
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>All Available Languages</h4>
+                <h4>{{__('All Available Languages')}}</h4>
                 <div class="card-header-action">
                     <a href="{{ route('admin.language.create') }}" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> Create
+                        <i class="fas fa-plus"></i> {{__('Create')}}
                     </a>
                 </div>
             </div>
             <div class="card-body">
-                <p>Write something here</p>
+                <div class="table-responsive">
+                    <table class="table table-striped" id="table-1">
+                      <thead>
+                        <tr>
+                          <th class="text-center">
+                            #
+                          </th>
+                          <th>{{ __('Language Name') }}</th>
+                          <th>{{ __('Language Code') }}</th>
+                          <th>{{ __('Default') }}</th>
+                          <th>{{ __('Status') }}</th>
+                          <th>{{ __('Action') }}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($languages as $language)
+                        <tr>
+                            <td>
+                                {{ $language->id }}
+                            </td>
+                            <td>{{ $language->name }}</td>
+                            <td>{{ $language->lang }}</td>
+
+                            <td>
+                                @if ($language->default == 1)
+                                    <span class="badge badge-primary">{{ __('Default') }}</span>
+                                @else
+                                    <span class="badge badge-warning">{{ __('No') }}</span>
+                                @endif
+                            </td>
+
+                            <td>
+                                @if ($language->status == 1)
+                                 <span class="badge badge-success">{{ __('Active') }}</span>
+                                @else
+                                    <span class="badge badge-danger">{{ __('Inactive') }}</span>
+                                @endif
+                            </td>
+
+                            <td>
+                                <a href="{{ route('admin.language.edit', $language->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('admin.language.destroy', $language->id) }}" class="btn btn-danger delete-item"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
             </div>
         </div>
     </div>
 @endsection
+
+
+@push('scripts')
+    <script>
+        $("#table-1").dataTable({
+            "columnDefs": [{
+                "sortable": false,
+                "targets": [2, 3]
+            }]
+        });
+    </script>
+@endpush

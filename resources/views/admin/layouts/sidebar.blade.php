@@ -5,18 +5,19 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">Blog</a>
+            <a href="index.html">{{ __('Blog') }}</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">BG</a>
+            <a href="index.html">{{ __('BG') }}</a>
         </div>
         <ul class="sidebar-menu">
-            <li class="menu-header">Dashboard</li>
+            <li class="menu-header">{{ __('Dashboard') }}</li>
             <li class="active">
-                <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>{{ __('Dashboard') }}</span></a>
             </li>
-            <li class="menu-header">Starter</li>
-            <li><a class="nav-link" href="{{ route('admin.language.index') }}"><i class="far fa-square"></i> <span>Languages</span></a></li>
+            <li class="menu-header">{{ __('Starter') }}</li>
+            <li><a class="nav-link" href="{{ route('admin.category.index') }}"><i class="far fa-square"></i> <span>{{ __('Category') }}</span></a></li>
+            <li><a class="nav-link" href="{{ route('admin.language.index') }}"><i class="far fa-square"></i> <span>{{ __('Languages') }}</span></a></li>
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i>

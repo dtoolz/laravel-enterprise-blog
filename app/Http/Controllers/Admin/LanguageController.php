@@ -84,6 +84,12 @@ class LanguageController extends Controller
     {
         try{
            $language = Language::findOrFail($id);
+           if($language->lang === 'en'){
+            return response([
+                'status' => 'error',
+                'message' => __('Default langauge cannot be deleted')
+               ]);
+           }
            $language->delete();
            return response([
             'status' => 'success',

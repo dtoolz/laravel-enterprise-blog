@@ -15,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $languages = Language::all();
+        return view('admin.category.index', compact('languages'));
     }
 
     /**

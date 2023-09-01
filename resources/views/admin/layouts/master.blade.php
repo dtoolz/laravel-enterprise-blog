@@ -118,7 +118,7 @@
                                     )
                                     setInterval(function(){
                                         window.location.reload();
-                                    }, 3000);
+                                    }, 2000);
                                 } else if (data.status === 'error') {
                                     Swal.fire(
                                         'Error!',

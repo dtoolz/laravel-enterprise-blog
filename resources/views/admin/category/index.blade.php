@@ -68,8 +68,7 @@
 
                                             <td>
                                                 <a href="{{ route('admin.category.edit', $category->id)}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                                <a href="" class="btn btn-danger delete-item"><i
-                                                        class="fas fa-trash-alt"></i></a>
+                                                <a href="{{ route('admin.category.destroy', $category->id) }}" class="btn btn-danger delete-item"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach

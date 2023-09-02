@@ -4,13 +4,13 @@
 @section('content')
     <div class="section">
         <div class="section-header">
-            <h1>{{ __('Categories') }}</h1>
+            <h1>{{ __('News') }}</h1>
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('All Available Categories') }}</h4>
+                <h4>{{ __('All Available News') }}</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('admin.category.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.news.create') }}" class="btn btn-primary">
                         <i class="fas fa-plus"></i> {{ __('Create') }}
                     </a>
                 </div>
@@ -25,7 +25,7 @@
                     @endforeach
                 </ul>
                 <div class="tab-content tab-bordered" id="myTab3Content">
-                    @foreach ($languages as $language)
+                    {{-- @foreach ($languages as $language)
                     @php
                         $categories = \App\Models\Category::where('language', $language->lang)->orderByDesc('id')->get();
                     @endphp
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    @endforeach --}}
                 </div>
             </div>
 

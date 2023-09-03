@@ -10,7 +10,7 @@
                 <h4>{{ __('Create a News Post') }}</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.news.store') }}" method="POST">
+                <form action="{{ route('admin.news.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="">{{ __('Language') }}</label>
@@ -54,6 +54,13 @@
                         <label for="">{{ __('Content') }}</label>
                         <textarea type="text" class="summernote-simple" name="content"></textarea>
                         @error('content')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="">{{ __('Tags') }}</label>
+                        <input name="tags" type="text" class="form-control inputtags">
+                        @error('tags')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>

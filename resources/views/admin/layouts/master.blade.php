@@ -95,6 +95,19 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
         /** Handle Dynamic delete **/
         $(document).ready(function() {
             $('.delete-item').on('click', function(e) {
@@ -121,7 +134,7 @@
                                         data.message,
                                         'success'
                                     )
-                                    setInterval(function(){
+                                    setInterval(function() {
                                         window.location.reload();
                                     }, 2000);
                                 } else if (data.status === 'error') {

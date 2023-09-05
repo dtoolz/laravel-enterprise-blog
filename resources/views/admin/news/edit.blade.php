@@ -7,11 +7,12 @@
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('Create a News Post') }}</h4>
+                <h4>{{ __('Update a News Post') }}</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.news.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.news.update', $news->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label for="">{{ __('Language') }}</label>
                         <select name="language" id="language-select" class="form-control select2">
@@ -126,7 +127,7 @@
                         </div>
 
                     </div>
-                    <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
                 </form>
             </div>
         </div>

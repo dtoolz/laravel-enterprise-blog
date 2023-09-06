@@ -2,9 +2,9 @@
 
 
   @section('content')
-      <!-- Trending news  carousel-->
-      @include('frontend.home-components.trending-news')
-      <!-- End Trending news carousel -->
+      <!-- Breaking news  carousel-->
+      @include('frontend.home-components.breaking-news')
+      <!-- End Breaking news carousel -->
 
       <!-- Hero news -->
       @include('frontend.home-components.hero-slider')

@@ -10,7 +10,7 @@ function formatTags(array $tags): String
 }
 
 /** get user selected language from the session */
-function getLanguage() : string
+function getLanguage() : String
 {
     if(session()->has('language')){
         return session('language');
@@ -32,4 +32,10 @@ function getLanguage() : string
 function setLanguage(string $code): void
 {
     session(['language' => $code]);
+}
+
+//truncate long texts
+function truncate(string $text, int $limit = 50): String
+{
+     return \Str::limit($text, $limit, '...');
 }

@@ -30,5 +30,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
+//invokable controller to retrieve selected user preferred langauage to store in the session
 Route::get('language', LanguageController::class)->name('language');
+
+//news-details route
+Route::get('news-details/{slug}', [HomeController::class, 'showNewsDetails'])->name('news-details');

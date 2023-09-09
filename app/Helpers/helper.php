@@ -39,3 +39,15 @@ function truncate(string $text, int $limit = 50): String
 {
      return \Str::limit($text, $limit, '...');
 }
+
+//format a number so that above a thousand can be represented as k
+function formatHugeNumbers(int $number): String
+{
+   if($number<1000){
+     return $number;
+   } elseif ($number < 1000000){
+     return round($number/1000, 1).'K';
+   }else {
+    return round($number / 1000000, 1).'M';
+   }
+}

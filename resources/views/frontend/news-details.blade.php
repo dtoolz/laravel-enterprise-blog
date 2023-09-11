@@ -139,11 +139,13 @@
                     <div class="wrap__profile">
                         <div class="wrap__profile-author">
                             <figure>
-                                <img src="images/news1.jpg" alt="" class="img-fluid rounded-circle">
+                                <img style="width: 200px;height: 200px;object-fit: cover;"
+                                    src="{{ asset($news->author->image) }}" alt=""
+                                    class="img-fluid rounded-circle">
                             </figure>
                             <div class="wrap__profile-author-detail">
-                                <div class="wrap__profile-author-detail-name">author</div>
-                                <h4>jhon doe</h4>
+                                <div class="wrap__profile-author-detail-name">{{ __('author') }}</div>
+                                <h4>{{ $news->author->name }}</h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis laboriosam ad
                                     beatae itaque ea non
                                     placeat officia ipsum praesentium! Ullam?</p>
@@ -180,151 +182,110 @@
                     <!-- end author-->
 
                     <!-- Comment  -->
-                    <div id="comments" class="comments-area">
-                        <h3 class="comments-title">2 Comments:</h3>
+                    @auth
+                        <div id="comments" class="comments-area">
+                            <h3 class="comments-title">2 Comments:</h3>
 
-                        <ol class="comment-list">
-                            <li class="comment">
-                                <aside class="comment-body">
-                                    <div class="comment-meta">
-                                        <div class="comment-author vcard">
-                                            <img src="images/news2.jpg" class="avatar" alt="image">
-                                            <b class="fn">Sinmun</b>
-                                            <span class="says">says:</span>
+                            <ol class="comment-list">
+                                <li class="comment">
+                                    <aside class="comment-body">
+                                        <div class="comment-meta">
+                                            <div class="comment-author vcard">
+                                                <img src="images/news2.jpg" class="avatar" alt="image">
+                                                <b class="fn">Sinmun</b>
+                                                <span class="says">says:</span>
+                                            </div>
+
+                                            <div class="comment-metadata">
+                                                <a href="#">
+                                                    <span>April 24, 2019 at 10:59 am</span>
+                                                </a>
+                                            </div>
                                         </div>
 
-                                        <div class="comment-metadata">
-                                            <a href="#">
-                                                <span>April 24, 2019 at 10:59 am</span>
-                                            </a>
+                                        <div class="comment-content">
+                                            <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s,
+                                                when an unknown
+                                                printer took a galley of type and scrambled it to make a type specimen book.
+                                            </p>
                                         </div>
-                                    </div>
 
-                                    <div class="comment-content">
-                                        <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s,
-                                            when an unknown
-                                            printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                    </div>
+                                        <div class="reply">
+                                            <a href="#" class="comment-reply-link" data-toggle="modal"
+                                                data-target="#exampleModal">Reply</a>
+                                            <span>
+                                                <i class="fa fa-trash"></i>
+                                            </span>
+                                        </div>
+                                    </aside>
 
-                                    <div class="reply">
-                                        <a href="#" class="comment-reply-link" data-toggle="modal"
-                                            data-target="#exampleModal">Reply</a>
-                                        <span>
-                                            <i class="fa fa-trash"></i>
-                                        </span>
-                                    </div>
-                                </aside>
+                                    <ol class="children">
+                                        <li class="comment">
+                                            <aside class="comment-body">
+                                                <div class="comment-meta">
+                                                    <div class="comment-author vcard">
+                                                        <img src="images/news3.jpg" class="avatar" alt="image">
+                                                        <b class="fn">Sinmun</b>
+                                                        <span class="says">says:</span>
+                                                    </div>
 
-                                <ol class="children">
-                                    <li class="comment">
-                                        <aside class="comment-body">
-                                            <div class="comment-meta">
-                                                <div class="comment-author vcard">
-                                                    <img src="images/news3.jpg" class="avatar" alt="image">
-                                                    <b class="fn">Sinmun</b>
-                                                    <span class="says">says:</span>
+                                                    <div class="comment-metadata">
+                                                        <a href="#">
+                                                            <span>April 24, 2019 at 10:59 am</span>
+                                                        </a>
+                                                    </div>
                                                 </div>
 
-                                                <div class="comment-metadata">
-                                                    <a href="#">
-                                                        <span>April 24, 2019 at 10:59 am</span>
-                                                    </a>
+                                                <div class="comment-content">
+                                                    <p>Lorem Ipsum has been the industry’s standard dummy text ever since
+                                                        the 1500s, when an
+                                                        unknown printer took a galley of type and scrambled it to make a
+                                                        type specimen book.</p>
                                                 </div>
-                                            </div>
 
-                                            <div class="comment-content">
-                                                <p>Lorem Ipsum has been the industry’s standard dummy text ever since
-                                                    the 1500s, when an
-                                                    unknown printer took a galley of type and scrambled it to make a
-                                                    type specimen book.</p>
-                                            </div>
+                                                <div class="reply">
+                                                    <a href="#" class="comment-reply-link" data-toggle="modal"
+                                                        data-target="#exampleModal">Reply</a>
+                                                    <span>
+                                                        <i class="fa fa-trash"></i>
+                                                    </span>
+                                                </div>
+                                            </aside>
+                                        </li>
+                                    </ol>
+                                </li>
+                            </ol>
 
-                                            <div class="reply">
-                                                <a href="#" class="comment-reply-link" data-toggle="modal"
-                                                    data-target="#exampleModal">Reply</a>
-                                                <span>
-                                                    <i class="fa fa-trash"></i>
-                                                </span>
-                                            </div>
-                                        </aside>
-                                    </li>
-                                </ol>
-                            </li>
+                            <div class="comment-respond">
+                                <h3 class="comment-reply-title">Leave a Reply</h3>
 
-                            <li class="comment">
-                                <aside class="comment-body">
-                                    <div class="comment-meta">
-                                        <div class="comment-author vcard">
-                                            <img src="images/news4.jpg" class="avatar" alt="image">
-                                            <b class="fn">Sinmun</b>
-                                            <span class="says">says:</span>
-                                        </div>
-
-                                        <div class="comment-metadata">
-                                            <a href="#">
-                                                <span>April 24, 2019 at 10:59 am</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="comment-content">
-                                        <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s,
-                                            when an unknown
-                                            printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                    </div>
-
-                                    <div class="reply">
-                                        <a href="#" class="comment-reply-link" data-toggle="modal"
-                                            data-target="#exampleModal">Reply</a>
-                                        <span>
-                                            <i class="fa fa-trash"></i>
-                                        </span>
-                                    </div>
-                                </aside>
-                            </li>
-                        </ol>
-
-                        <div class="comment-respond">
-                            <h3 class="comment-reply-title">Leave a Reply</h3>
-
-                            <form class="comment-form">
-                                <p class="comment-notes">
-                                    <span id="email-notes">Your email address will not be published.</span>
-                                    Required fields are marked
-                                    <span class="required">*</span>
-                                </p>
-                                <p class="comment-form-comment">
-                                    <label for="comment">Comment</label>
-                                    <textarea name="comment" id="comment" cols="45" rows="5" maxlength="65525" required="required"></textarea>
-                                </p>
-                                <p class="comment-form-author">
-                                    <label>Name <span class="required">*</span></label>
-                                    <input type="text" id="author" name="name" required="required">
-                                </p>
-                                <p class="comment-form-email">
-                                    <label for="email">Email <span class="required">*</span></label>
-                                    <input type="email" id="email" name="email" required="required">
-                                </p>
-                                <p class="comment-form-url">
-                                    <label for="url">Website</label>
-                                    <input type="url" id="url" name="url">
-                                </p>
-                                <p class="comment-form-cookies-consent">
-                                    <input type="checkbox" value="yes" name="wp-comment-cookies-consent"
-                                        id="wp-comment-cookies-consent">
-                                    <label for="wp-comment-cookies-consent">Save my name, email, and website in this
-                                        browser for the next
-                                        span I comment.</label>
-                                </p>
-                                <p class="form-submit mb-0">
-                                    <input type="submit" name="submit" id="submit" class="submit"
-                                        value="Post Comment">
-                                </p>
-                            </form>
+                                <form action="{{ route('news-comment') }}" method="POST" class="comment-form">
+                                    @csrf
+                                    <p class="comment-form-comment">
+                                        <label for="comment">Comment</label>
+                                        <textarea name="comment" id="comment" cols="45" rows="5" maxlength="65525" required="required"></textarea>
+                                        <input type="hidden" name="news_id" value="{{ $news->id }}">
+                                        <input type="hidden" name="parent_id" value="">
+                                        @error('comment')
+                                          <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </p>
+                                    <p class="form-submit mb-0">
+                                        <input type="submit" name="submit" id="submit" class="submit"
+                                            value="Post a Comment">
+                                    </p>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    @else
+                        <div class="card my-5">
+                            <div class="card-body">
+                                <h5 class="p-0">{{ __('Please') }}, <a
+                                        href="{{ route('login') }}">{{ __('Login') }}</a> {{ __('to make a comment') }}
+                                </h5>
+                            </div>
+                        </div>
+                    @endauth
                     <!-- Modal -->
                     <div class="comment_modal">
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -640,7 +601,8 @@
                                                 <p>
                                                     {!! truncate($news->content, 150) !!}
                                                 </p>
-                                                <a href="{{ route('news-details', $news->slug) }}" class="btn btn-outline-primary mb-4 text-capitalize">
+                                                <a href="{{ route('news-details', $news->slug) }}"
+                                                    class="btn btn-outline-primary mb-4 text-capitalize">
                                                     {{ __('Read More') }}
                                                 </a>
                                             </div>
@@ -703,13 +665,13 @@
                             <h4 class="border_section">{{ __('tags') }}</h4>
                             <div class="blog-tags p-0">
                                 <ul class="list-inline">
-                                   @foreach ($mostCommonTags as $tag)
-                                      <li class="list-inline-item">
-                                        <a href="#">
-                                            #{{ $tag->name}} ({{ $tag->count }})
-                                        </a>
-                                      </li>
-                                   @endforeach
+                                    @foreach ($mostCommonTags as $tag)
+                                        <li class="list-inline-item">
+                                            <a href="#">
+                                                #{{ $tag->name }} ({{ $tag->count }})
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </aside>

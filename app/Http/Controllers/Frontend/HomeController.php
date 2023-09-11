@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use App\Models\Tag;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,9 @@ class HomeController extends Controller
 
         $recentNews = News::with(['category', 'author'])->where('slug', '!=', $news->slug)->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'DESC')->take(4)->get();
 
+        $mostCommonTags = $this->mostCommonTags();
         $this->countViews($news);
-        return view('frontend.news-details', compact('news', 'recentNews'));
+        return view('frontend.news-details', compact('news', 'recentNews', 'mostCommonTags'));
     }
 
     public function countViews($news)
@@ -39,5 +41,15 @@ class HomeController extends Controller
             $news->increment('views');
         }
 
+    }
+
+    public function mostCommonTags()
+    {
+         return Tag::select('name', \DB::raw('COUNT(*) as count'))
+        ->where('language', getLanguage())
+        ->groupBy('name')
+        ->orderByDesc('count')
+        ->take(15)
+        ->get();
     }
 }

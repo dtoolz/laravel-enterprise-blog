@@ -21,7 +21,7 @@ class HomeController extends Controller
 
     public function showNewsDetails(string $slug)
     {
-        $news = News::with(['author', 'tags'])->where('slug', $slug)->GetActiveNews()->GetLocalizedLanguage()->first();
+        $news = News::with(['author', 'tags', 'comments'])->where('slug', $slug)->GetActiveNews()->GetLocalizedLanguage()->first();
 
         $recentNews = News::with(['category', 'author'])->where('slug', '!=', $news->slug)->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'DESC')->take(4)->get();
 

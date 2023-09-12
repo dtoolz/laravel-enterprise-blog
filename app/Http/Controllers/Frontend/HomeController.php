@@ -68,6 +68,24 @@ class HomeController extends Controller
         $comment->parent_id = $request->parent_id;
         $comment->comment = $request->comment;
         $comment->save();
+        toast(__('Comment added successfully!'), 'success');
+
+        return redirect()->back();
+    }
+
+    public function handleReply(Request $request)
+    {
+        $request->validate([
+            'reply' => ['required', 'string', 'max:1000']
+        ]);
+
+        $comment = new Comment();
+        $comment->news_id = $request->news_id;
+        $comment->user_id = Auth::user()->id;
+        $comment->parent_id = $request->parent_id;
+        $comment->comment = $request->reply;
+        $comment->save();
+        toast(__('Comment added successfully!'), 'success');
 
         return redirect()->back();
     }

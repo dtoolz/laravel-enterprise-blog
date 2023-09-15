@@ -39,3 +39,4 @@ Route::get('news-details/{slug}', [HomeController::class, 'showNewsDetails'])->n
 //news comments route
 Route::post('news-comment', [HomeController::class, 'handleComment'])->name('news-comment');
 Route::post('news-comment-reply', [HomeController::class, 'handleReply'])->name('news-comment-reply');
+Route::delete('news-comment-delete', [HomeController::class, 'commentDelete'])->name('news-comment-delete');

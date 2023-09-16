@@ -4,8 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Top News HTML template </title>
+    <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="og:title" content="@yield('meta_og_title')" />
+    <meta name="og:description" content="@yield('meta_og_description')" />
+    <meta name="og:image" content="@yield('meta_og_image')" />
+    <meta name="twitter:title" content="@yield('meta_tw_title')" />
+    <meta name="twitter:description" content="@yield('meta_tw_description')" />
+    <meta name="twitter:image" content="@yield('meta_tw_image')" />
     <link href="{{ asset('frontend/assets/css/styles.css') }}" rel="stylesheet">
 </head>
 

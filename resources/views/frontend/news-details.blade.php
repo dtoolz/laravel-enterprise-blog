@@ -247,7 +247,8 @@
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModal-{{ $comment->id }}">Reply</a>
                                                                 @endif
-                                                                <span style="margin-left: auto;" class="delete-msg" data-id="{{ $reply->id }}">
+                                                                <span style="margin-left: auto;" class="delete-msg"
+                                                                    data-id="{{ $reply->id }}">
                                                                     <i class="fa fa-trash"></i>
                                                                 </span>
                                                             </div>
@@ -258,6 +259,38 @@
                                         @endif
 
                                     </li>
+                                    <!-- Modal -->
+                                    <div class="comment_modal">
+                                        <div class="modal fade" id="exampleModal-{{ $comment->id }}" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            {{ __('Write Your Reply') }}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{ route('news-comment-reply') }}" method="POST">
+                                                            @csrf
+                                                            <textarea name="reply" cols="30" rows="7" placeholder="Type. . ."></textarea>
+                                                            <input type="hidden" name="news_id"
+                                                                value="{{ $news->id }}">
+                                                            <input type="hidden" name="parent_id"
+                                                                value="{{ $comment->id }}">
+                                                            @error('reply')
+                                                                <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
+                                                            <button type="submit">submit</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endforeach
                             </ol>
 
@@ -291,54 +324,28 @@
                             </div>
                         </div>
                     @endauth
-                    <!-- Modal -->
-                    <div class="comment_modal">
-                        <div class="modal fade" id="exampleModal-{{ $comment->id }}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">{{ __('Write Your Reply') }}</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="{{ route('news-comment-reply') }}" method="POST">
-                                            @csrf
-                                            <textarea name="reply" cols="30" rows="7" placeholder="Type. . ."></textarea>
-                                            <input type="hidden" name="news_id" value="{{ $news->id }}">
-                                            <input type="hidden" name="parent_id" value="{{ $comment->id }}">
-                                            @error('reply')
-                                                <p class="text-danger">{{ $message }}</p>
-                                            @enderror
-                                            <button type="submit">submit</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- end comment -->
-
 
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="single_navigation-prev">
-                                <a href="#">
-                                    <span>previous post</span>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, similique.
-                                </a>
+                                @if ($previousPost)
+                                    <a href="{{ route('news-details', $previousPost->slug) }}">
+                                        <span>{{ __('previous post') }}</span>
+                                        {!! truncate($previousPost->title) !!}
+                                    </a>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="single_navigation-next text-left text-md-right">
-                                <a href="#">
-                                    <span>next post</span>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, nesciunt.
-                                </a>
+                                @if ($nextPost)
+                                    <a href="{{ route('news-details', $nextPost->slug) }}">
+                                        <span>{{ __('next post') }}</span>
+                                        {!! truncate($nextPost->title) !!}
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>

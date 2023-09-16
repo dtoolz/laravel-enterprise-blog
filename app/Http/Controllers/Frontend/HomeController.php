@@ -26,8 +26,12 @@ class HomeController extends Controller
         $recentNews = News::with(['category', 'author'])->where('slug', '!=', $news->slug)->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'DESC')->take(4)->get();
 
         $mostCommonTags = $this->mostCommonTags();
+
+        $nextPost = News::where('id', '>', $news->id)->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'asc')->first();
+        $previousPost = News::where('id', '<', $news->id)->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'desc')->first();
+
         $this->countViews($news);
-        return view('frontend.news-details', compact('news', 'recentNews', 'mostCommonTags'));
+        return view('frontend.news-details', compact('news', 'recentNews', 'mostCommonTags', 'nextPost', 'previousPost'));
     }
 
     public function countViews($news)

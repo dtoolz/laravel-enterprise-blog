@@ -23,6 +23,7 @@ class HomeController extends Controller
     {
         $news = News::with(['author', 'tags', 'comments'])->where('slug', $slug)->GetActiveNews()->GetLocalizedLanguage()->first();
 
+        $this->countViews($news);
         $recentNews = News::with(['category', 'author'])->where('slug', '!=', $news->slug)->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'DESC')->take(4)->get();
 
         $mostCommonTags = $this->mostCommonTags();
@@ -30,8 +31,9 @@ class HomeController extends Controller
         $nextPost = News::where('id', '>', $news->id)->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'asc')->first();
         $previousPost = News::where('id', '<', $news->id)->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'desc')->first();
 
-        $this->countViews($news);
-        return view('frontend.news-details', compact('news', 'recentNews', 'mostCommonTags', 'nextPost', 'previousPost'));
+        $relatedPosts = News::where('slug', '!=', $news->slug)->where('category_id', $news->category_id)->GetActiveNews()->GetLocalizedLanguage()->take(5)->get();
+
+        return view('frontend.news-details', compact('news', 'recentNews', 'mostCommonTags', 'nextPost', 'previousPost', 'relatedPosts'));
     }
 
     public function countViews($news)

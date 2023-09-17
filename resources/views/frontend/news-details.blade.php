@@ -81,37 +81,37 @@
                                 </div>
 
                                 <ul class="list-inline">
-                                    <span class="share">share on:</span>
+                                    <span class="share">{{ __('share on') }}:</span>
                                     <li class="list-inline-item">
-                                        <a class="btn btn-social-o facebook" href="#">
+                                        <a class="btn btn-social-o facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="_blank">
                                             <i class="fa fa-facebook-f"></i>
-                                            <span>facebook</span>
+                                            <span>{{ __('facebook') }}</span>
                                         </a>
 
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="btn btn-social-o twitter" href="#">
+                                        <a class="btn btn-social-o twitter" href="https://twitter.com/intent/tweet?text={{ $news->title }}&url={{ url()->current() }}" target="_blank">
                                             <i class="fa fa-twitter"></i>
-                                            <span>twitter</span>
+                                            <span>{{ __('twitter') }}</span>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="btn btn-social-o whatsapp" href="#">
+                                        <a class="btn btn-social-o whatsapp" href="https://wa.me/?text={{ $news->title }}%20{{ url()->current() }}" target="_blank">
                                             <i class="fa fa-whatsapp"></i>
-                                            <span>whatsapp</span>
+                                            <span>{{ __('whatsapp') }}</span>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="btn btn-social-o telegram" href="#">
+                                        <a class="btn btn-social-o telegram" href="https://t.me/share/url?url={{ url()->current() }}&text={{ $news->title }}" target="_blank">
                                             <i class="fa fa-telegram"></i>
-                                            <span>telegram</span>
+                                            <span>{{ __('telegram') }}</span>
                                         </a>
                                     </li>
 
                                     <li class="list-inline-item">
-                                        <a class="btn btn-linkedin-o linkedin" href="#">
+                                        <a class="btn btn-linkedin-o linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ url()->current() }}&title={{ $news->title }}" target="_blank">
                                             <i class="fa fa-linkedin"></i>
-                                            <span>linkedin</span>
+                                            <span>{{ __('linkedin') }}</span>
                                         </a>
                                     </li>
 

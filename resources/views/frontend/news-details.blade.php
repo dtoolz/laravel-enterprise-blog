@@ -195,7 +195,14 @@
                     <!-- Comment  -->
                     @auth
                         <div id="comments" class="comments-area">
-                            <h3 class="comments-title">2 Comments:</h3>
+                            @if ($news->comments()->count() == 0)
+                              <h3 class="comments-title">{{ __('No')}} {{ __('Comment') }}:</h3>
+                            @elseif ($news->comments()->count() == 1)
+                             <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('Comment') }}:</h3>
+                            @elseif ($news->comments()->count() > 1)
+                             <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('Comments') }}:</h3>
+                            @endif
+
 
                             <ol class="comment-list">
                                 @foreach ($news->comments()->whereNull('parent_id')->get() as $comment)
@@ -222,7 +229,7 @@
 
                                             <div class="reply">
                                                 <a href="#" class="comment-reply-link" data-toggle="modal"
-                                                    data-target="#exampleModal-{{ $comment->id }}">Reply</a>
+                                                    data-target="#exampleModal-{{ $comment->id }}">{{ __('Reply') }}</a>
                                                 <span class="delete-msg" data-id="{{ $comment->id }}">
                                                     <i class="fa fa-trash"></i>
                                                 </span>
@@ -238,7 +245,7 @@
                                                                     <img src="{{ asset('frontend/assets/images/placeholder.jpg') }}"
                                                                         class="avatar" alt="image">
                                                                     <b class="fn">{{ $reply->user->name }}</b>
-                                                                    <span class="says">says:</span>
+                                                                    <span class="says">{{ __('says') }}:</span>
                                                                 </div>
 
                                                                 <div class="comment-metadata">
@@ -256,7 +263,7 @@
                                                                 @if ($loop->last)
                                                                     <a href="#" class="comment-reply-link"
                                                                         data-toggle="modal"
-                                                                        data-target="#exampleModal-{{ $comment->id }}">Reply</a>
+                                                                        data-target="#exampleModal-{{ $comment->id }}">{{ __('Reply') }}</a>
                                                                 @endif
                                                                 <span style="margin-left: auto;" class="delete-msg"
                                                                     data-id="{{ $reply->id }}">
@@ -295,7 +302,7 @@
                                                             @error('reply')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
-                                                            <button type="submit">submit</button>
+                                                            <button type="submit">{{ __('submit') }}</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -306,12 +313,12 @@
                             </ol>
 
                             <div class="comment-respond">
-                                <h3 class="comment-reply-title">Leave a Reply</h3>
+                                <h3 class="comment-reply-title">{{ __('Leave a Reply') }}</h3>
 
                                 <form action="{{ route('news-comment') }}" method="POST" class="comment-form">
                                     @csrf
                                     <p class="comment-form-comment">
-                                        <label for="comment">Comment</label>
+                                        <label for="comment">{{ __('Comment') }}</label>
                                         <textarea name="comment" id="comment" cols="45" rows="5" maxlength="65525" required="required"></textarea>
                                         <input type="hidden" name="news_id" value="{{ $news->id }}">
                                         <input type="hidden" name="parent_id" value="">
@@ -525,7 +532,7 @@
 
                         <!-- social media -->
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">stay connected</h4>
+                            <h4 class="border_section">{{ __('stay connected') }}</h4>
                             <!-- widget Social media -->
                             <div class="wrap__social__media">
                                 <a href="#" target="_blank">
@@ -587,9 +594,27 @@
                             </div>
                         </aside>
 
+                        <aside class="wrapper__list__article">
+                            <h4 class="border_section">{{ __('newsletter') }}</h4>
+                            <!-- Form Subscribe -->
+                            <div class="widget__form-subscribe bg__card-shadow">
+                                <h6>
+                                    {{ __('The most important world news and events of the day') }}.
+                                </h6>
+                                <p><small>{{ __('Get daily newsletter on your inbox') }}.</small></p>
+                                <form action="" class="newsletter-form">
+                                    <div class="input-group ">
+                                        <input type="text" class="form-control" name="email" placeholder="Your email address">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary newsletter-button" type="submit">{{ __('sign up') }}</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </aside>
 
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">Advertise</h4>
+                            <h4 class="border_section">{{ __('Advertise') }}</h4>
                             <a href="#">
                                 <figure>
                                     <img src="images/news6.jpg" alt="" class="img-fluid">
@@ -597,7 +622,7 @@
                             </a>
                         </aside>
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">sign up</button>
+                            <button class="btn btn-primary" type="button">{{ __('sign up') }}</button>
                         </div>
 
                     </div>

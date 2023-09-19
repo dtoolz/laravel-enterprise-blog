@@ -21,7 +21,9 @@ class HomeController extends Controller
             'show_at_slider' => 1,
         ])->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'DESC')->take(7)->get();
 
-        return view('frontend.home', compact('breakingNews', 'heroSlider'));
+        $recentNews = News::with(['category', 'author'])->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'DESC')->take(6)->get();
+
+        return view('frontend.home', compact('breakingNews', 'heroSlider', 'recentNews'));
     }
 
     public function showNewsDetails(string $slug)

@@ -97,7 +97,7 @@
     </div>
     <!-- End Popular news header-->
     <!-- Popular news carousel -->
-    <div class="popular__news-header-carousel">
+    {{-- <div class="popular__news-header-carousel">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -257,6 +257,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Popular news carousel -->
 </section>

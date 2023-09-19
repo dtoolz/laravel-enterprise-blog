@@ -22,8 +22,9 @@ class HomeController extends Controller
         ])->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'DESC')->take(7)->get();
 
         $recentNews = News::with(['category', 'author'])->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'DESC')->take(6)->get();
+        $popularNews = News::with(['category'])->where('show_at_popular', 1)->GetActiveNews()->GetLocalizedLanguage()->orderBy('updated_at', 'DESC')->take(4)->get();
 
-        return view('frontend.home', compact('breakingNews', 'heroSlider', 'recentNews'));
+        return view('frontend.home', compact('breakingNews', 'heroSlider', 'recentNews', 'popularNews'));
     }
 
     public function showNewsDetails(string $slug)

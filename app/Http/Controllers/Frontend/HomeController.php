@@ -50,12 +50,12 @@ class HomeController extends Controller
                 ->orderBy('id', 'DESC')
                 ->take(4)
                 ->get();
-        } else {
-            $categorySectionOne = collect();
-            $categorySectionTwo = collect();
-            $categorySectionThree = collect();
-            $categorySectionFour = collect();
         }
+
+            $mostViewedPosts = News::GetActiveNews()->GetLocalizedLanguage()
+                ->orderBy('views', 'DESC')
+                ->take(3)
+                ->get();
 
         return view('frontend.home', compact(
             'breakingNews',
@@ -65,7 +65,8 @@ class HomeController extends Controller
             'categorySectionOne',
             'categorySectionTwo',
             'categorySectionThree',
-            'categorySectionFour'
+            'categorySectionFour',
+            'mostViewedPosts'
             )
         );
     }

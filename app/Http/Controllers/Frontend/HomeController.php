@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\HomeSectionSetting;
 use App\Models\News;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -24,7 +25,49 @@ class HomeController extends Controller
         $recentNews = News::with(['category', 'author'])->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'DESC')->take(6)->get();
         $popularNews = News::with(['category'])->where('show_at_popular', 1)->GetActiveNews()->GetLocalizedLanguage()->orderBy('updated_at', 'DESC')->take(4)->get();
 
-        return view('frontend.home', compact('breakingNews', 'heroSlider', 'recentNews', 'popularNews'));
+        $homeSectionSetting = HomeSectionSetting::where('language', getLanguage())->first();
+        if ($homeSectionSetting) {
+            $categorySectionOne = News::where('category_id', $homeSectionSetting->category_section_one)
+                ->GetActiveNews()->GetLocalizedLanguage()
+                ->orderBy('id', 'DESC')
+                ->take(8)
+                ->get();
+
+            $categorySectionTwo = News::where('category_id', $homeSectionSetting->category_section_two)
+                ->GetActiveNews()->GetLocalizedLanguage()
+                ->orderBy('id', 'DESC')
+                ->take(8)
+                ->get();
+
+            $categorySectionThree = News::where('category_id', $homeSectionSetting->category_section_three)
+                ->GetActiveNews()->GetLocalizedLanguage()
+                ->orderBy('id', 'DESC')
+                ->take(6)
+                ->get();
+
+            $categorySectionFour = News::where('category_id', $homeSectionSetting->category_section_four)
+                ->GetActiveNews()->GetLocalizedLanguage()
+                ->orderBy('id', 'DESC')
+                ->take(4)
+                ->get();
+        } else {
+            $categorySectionOne = collect();
+            $categorySectionTwo = collect();
+            $categorySectionThree = collect();
+            $categorySectionFour = collect();
+        }
+
+        return view('frontend.home', compact(
+            'breakingNews',
+            'heroSlider',
+            'recentNews',
+            'popularNews',
+            'categorySectionOne',
+            'categorySectionTwo',
+            'categorySectionThree',
+            'categorySectionFour'
+            )
+        );
     }
 
     public function showNewsDetails(string $slug)
@@ -62,18 +105,18 @@ class HomeController extends Controller
 
     public function mostCommonTags()
     {
-         return Tag::select('name', \DB::raw('COUNT(*) as count'))
-        ->where('language', getLanguage())
-        ->groupBy('name')
-        ->orderByDesc('count')
-        ->take(15)
-        ->get();
+        return Tag::select('name', \DB::raw('COUNT(*) as count'))
+            ->where('language', getLanguage())
+            ->groupBy('name')
+            ->orderByDesc('count')
+            ->take(15)
+            ->get();
     }
 
     public function handleComment(Request $request)
     {
         $request->validate([
-            'comment' => ['required', 'string', 'max:1000']
+            'comment' => ['required', 'string', 'max:1000'],
         ]);
 
         $comment = new Comment();
@@ -90,7 +133,7 @@ class HomeController extends Controller
     public function handleReply(Request $request)
     {
         $request->validate([
-            'reply' => ['required', 'string', 'max:1000']
+            'reply' => ['required', 'string', 'max:1000'],
         ]);
 
         $comment = new Comment();
@@ -106,8 +149,8 @@ class HomeController extends Controller
 
     public function commentDelete(Request $request)
     {
-         $comment = Comment::findOrFail($request->id);
-         if(Auth::user()->id === $comment->user_id ){
+        $comment = Comment::findOrFail($request->id);
+        if (Auth::user()->id === $comment->user_id) {
             $comment->delete();
             return response(['status' => 'success', 'message' => __('Deleted Successfully!')]);
         }

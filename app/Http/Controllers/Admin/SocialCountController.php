@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Language;
+use App\Models\SocialCount;
 use Illuminate\Http\Request;
 
 class SocialCountController extends Controller
@@ -22,7 +23,8 @@ class SocialCountController extends Controller
      */
     public function create()
     {
-        //
+        $languages = Language::all();
+        return view('admin.social-count.create', compact('languages'));
     }
 
     /**
@@ -30,7 +32,20 @@ class SocialCountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $socialCount = new SocialCount();
+        $socialCount->language = $request->language;
+        $socialCount->icon = $request->icon;
+        $socialCount->url = $request->url;
+        $socialCount->fan_count = $request->fan_count;
+        $socialCount->fan_type = $request->fan_type;
+        $socialCount->button_text = $request->button_text;
+        $socialCount->color = $request->color;
+        $socialCount->status = $request->status;
+        $socialCount->save();
+
+        toast(__('Created Successfully!'), 'success');
+
+        return redirect()->route('admin.social-count.index');
     }
 
     /**

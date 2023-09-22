@@ -10,7 +10,7 @@
             <div class="card-header">
                 <h4>{{ __('All Available Categories') }}</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('admin.category.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.social-count.create') }}" class="btn btn-primary">
                         <i class="fas fa-plus"></i> {{ __('Create') }}
                     </a>
                 </div>

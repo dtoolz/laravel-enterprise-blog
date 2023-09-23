@@ -4,11 +4,11 @@
 @section('content')
     <div class="section">
         <div class="section-header">
-            <h1>{{ __('Categories') }}</h1>
+            <h1>{{ __('Social Media Counts') }}</h1>
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('All Available Categories') }}</h4>
+                <h4>{{ __('All Created Social Media Counts') }}</h4>
                 <div class="card-header-action">
                     <a href="{{ route('admin.social-count.create') }}" class="btn btn-primary">
                         <i class="fas fa-plus"></i> {{ __('Create') }}
@@ -27,7 +27,7 @@
                 <div class="tab-content tab-bordered" id="myTab3Content">
                     @foreach ($languages as $language)
                     @php
-                        $categories = \App\Models\Category::where('language', $language->lang)->orderByDesc('id')->get();
+                         $socialCounts = \App\Models\SocialCount::where('language', $language->lang)->get();
                     @endphp
                     <div class="tab-pane fade show {{ $loop->index === 0 ? 'active' : '' }}" id="home-{{ $language->lang }}" role="tabpanel" aria-labelledby="home-tab2">
                         <div class="card-body">
@@ -38,39 +38,36 @@
                                             <th class="text-center">
                                                 #
                                             </th>
-                                            <th>{{ __('Category Name') }}</th>
-                                            <th>{{ __('Category Code') }}</th>
-                                            <th>{{ __('Displaying at Navigation') }}</th>
+                                            <th>{{ __('Icon') }}</th>
+                                            <th>{{ __('Link') }}</th>
                                             <th>{{ __('Status') }}</th>
+                                            <th>{{ __('language') }}</th>
                                             <th>{{ __('Action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($categories as $category)
-                                        <tr>
-                                            <td>{{ $category->id }}</td>
-                                            <td>{{ $category->name }}</td>
-                                            <td>{{ $category->language }}</td>
-                                            <td>
-                                                @if ($category->show_at_nav == 1)
-                                                    <span class="badge badge-primary">{{ __('Yes') }}</span>
-                                                @else
-                                                     <span class="badge badge-warning">{{ __('No') }}</span>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if ($category->status == 1)
-                                                    <span class="badge badge-success">{{ __('Yes') }}</span>
-                                                @else
-                                                     <span class="badge badge-warning">{{ __('No') }}</span>
-                                                @endif
-                                            </td>
-
-                                            <td>
-                                                <a href="{{ route('admin.category.edit', $category->id)}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                                <a href="{{ route('admin.category.destroy', $category->id) }}" class="btn btn-danger delete-item"><i class="fas fa-trash-alt"></i></a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($socialCounts as $socialCount)
+                                            <tr>
+                                                <td>{{ $socialCount->id }}</td>
+                                                <td><i style="font-size: 20px;" class="{{ $socialCount->icon }}"></i>
+                                                </td>
+                                                <td>{{ $socialCount->url }}</i></td>
+                                                <td>
+                                                    @if ($socialCount->status == 1)
+                                                        <span class="badge badge-success">{{ __('Yes') }}</span>
+                                                    @else
+                                                        <span class="badge badge-danger">{{ __('No') }}</span>
+                                                    @endif
+                                                </td>
+                                                <td>{{ $socialCount->language }}</td>
+                                                <td>
+                                                    <a href="{{ route('admin.social-count.edit', $socialCount->id) }}"
+                                                        class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('admin.social-count.destroy', $socialCount->id) }}"
+                                                        class="btn btn-danger delete-item"><i
+                                                            class="fas fa-trash-alt"></i></a>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -80,7 +77,6 @@
                     @endforeach
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

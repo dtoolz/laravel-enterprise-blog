@@ -105,8 +105,10 @@ class HomeController extends Controller
             })->GetActiveNews()->GetLocalizedLanguage()->paginate(4);
         };
 
+        $recentNews = News::with(['category', 'author'])->GetActiveNews()->GetLocalizedLanguage()->orderBy('id', 'DESC')->take(4)->get();
+        $mostCommonTags = $this->mostCommonTags();
 
-        return view('frontend.news', compact('news'));
+        return view('frontend.news', compact('news', 'recentNews', 'mostCommonTags'));
     }
 
     public function countViews($news)

@@ -94,6 +94,21 @@ class HomeController extends Controller
         return view('frontend.news-details', compact('news', 'recentNews', 'mostCommonTags', 'nextPost', 'previousPost', 'relatedPosts'));
     }
 
+    public function news(Request $request)
+    {
+        if($request->has('search')) {
+            $news = News::where(function($query) use ($request){
+                $query->where('title', 'like','%'.$request->search.'%')
+                    ->orWhere('content', 'like','%'.$request->search.'%');
+            })->orWhereHas('category', function($query) use ($request){
+                $query->where('name', 'like','%'.$request->search.'%');
+            })->GetActiveNews()->GetLocalizedLanguage()->get();
+        };
+
+
+        return view('frontend.news', compact('news'));
+    }
+
     public function countViews($news)
     {
         if (session()->has('viewed_posts')) {

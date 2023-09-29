@@ -13,7 +13,7 @@
         <ul class="sidebar-menu">
             <li class="menu-header">{{ __('Dashboard') }}</li>
             <li class="active">
-                <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>{{ __('Dashboard') }}</span></a>
+                <a href="{{ route('admin.dashboard') }}" class="nav-link"><i class="fas fa-fire"></i><span>{{ __('Dashboard') }}</span></a>
             </li>
             <li class="menu-header">{{ __('Starter') }}</li>
             <li><a class="nav-link" href="{{ route('admin.category.index') }}"><i class="far fa-square"></i> <span>{{ __('Category') }}</span></a></li>
@@ -28,6 +28,7 @@
             </li>
             <li><a class="nav-link" href="{{ route('admin.social-count.index') }}"><i class="far fa-square"></i> <span>{{ __('Social Count') }}</span></a></li>
             <li><a class="nav-link" href="{{ route('admin.home-section-setting.index') }}"><i class="far fa-square"></i> <span>{{ __('Home Section Setting') }}</span></a></li>
+            <li><a class="nav-link" href="{{ route('admin.advert.index') }}"><i class="far fa-square"></i> <span>{{ __('Advertisement') }}</span></a></li>
             <li><a class="nav-link" href="{{ route('admin.language.index') }}"><i class="far fa-square"></i> <span>{{ __('Languages') }}</span></a></li>
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
             <li class="dropdown">

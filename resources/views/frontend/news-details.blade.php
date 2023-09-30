@@ -83,33 +83,43 @@
                                 <ul class="list-inline">
                                     <span class="share">{{ __('share on') }}:</span>
                                     <li class="list-inline-item">
-                                        <a class="btn btn-social-o facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="_blank">
+                                        <a class="btn btn-social-o facebook"
+                                            href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"
+                                            target="_blank">
                                             <i class="fa fa-facebook-f"></i>
                                             <span>{{ __('facebook') }}</span>
                                         </a>
 
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="btn btn-social-o twitter" href="https://twitter.com/intent/tweet?text={{ $news->title }}&url={{ url()->current() }}" target="_blank">
+                                        <a class="btn btn-social-o twitter"
+                                            href="https://twitter.com/intent/tweet?text={{ $news->title }}&url={{ url()->current() }}"
+                                            target="_blank">
                                             <i class="fa fa-twitter"></i>
                                             <span>{{ __('twitter') }}</span>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="btn btn-social-o whatsapp" href="https://wa.me/?text={{ $news->title }}%20{{ url()->current() }}" target="_blank">
+                                        <a class="btn btn-social-o whatsapp"
+                                            href="https://wa.me/?text={{ $news->title }}%20{{ url()->current() }}"
+                                            target="_blank">
                                             <i class="fa fa-whatsapp"></i>
                                             <span>{{ __('whatsapp') }}</span>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="btn btn-social-o telegram" href="https://t.me/share/url?url={{ url()->current() }}&text={{ $news->title }}" target="_blank">
+                                        <a class="btn btn-social-o telegram"
+                                            href="https://t.me/share/url?url={{ url()->current() }}&text={{ $news->title }}"
+                                            target="_blank">
                                             <i class="fa fa-telegram"></i>
                                             <span>{{ __('telegram') }}</span>
                                         </a>
                                     </li>
 
                                     <li class="list-inline-item">
-                                        <a class="btn btn-linkedin-o linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ url()->current() }}&title={{ $news->title }}" target="_blank">
+                                        <a class="btn btn-linkedin-o linkedin"
+                                            href="https://www.linkedin.com/shareArticle?mini=true&url={{ url()->current() }}&title={{ $news->title }}"
+                                            target="_blank">
                                             <i class="fa fa-linkedin"></i>
                                             <span>{{ __('linkedin') }}</span>
                                         </a>
@@ -196,11 +206,11 @@
                     @auth
                         <div id="comments" class="comments-area">
                             @if ($news->comments()->count() == 0)
-                              <h3 class="comments-title">{{ __('No')}} {{ __('Comment') }}:</h3>
+                                <h3 class="comments-title">{{ __('No') }} {{ __('Comment') }}:</h3>
                             @elseif ($news->comments()->count() == 1)
-                             <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('Comment') }}:</h3>
+                                <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('Comment') }}:</h3>
                             @elseif ($news->comments()->count() > 1)
-                             <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('Comments') }}:</h3>
+                                <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('Comments') }}:</h3>
                             @endif
 
 
@@ -368,11 +378,15 @@
                         </div>
                     </div>
 
-                    <div class="small_add_banner mb-5 pb-4">
-                        <div class="small_add_banner_img">
-                            <img src="images/placeholder_large.jpg" alt="adds">
+                    @if ($advert->news_details_page_advert_status == 1)
+                        <div class="mb-5 pb-4">
+                            <div class="col-12">
+                                <a href="{{ $advert->news_details_page_advert_url }}">
+                                    <img src="{{ asset($advert->news_details_page_advert) }}" alt="adds">
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
 
                     <div class="clearfix"></div>
@@ -580,23 +594,27 @@
                                 <p><small>{{ __('Get daily newsletter on your inbox') }}.</small></p>
                                 <form action="" class="newsletter-form">
                                     <div class="input-group ">
-                                        <input type="text" class="form-control" name="email" placeholder="Your email address">
+                                        <input type="text" class="form-control" name="email"
+                                            placeholder="Your email address">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary newsletter-button" type="submit">{{ __('sign up') }}</button>
+                                            <button class="btn btn-primary newsletter-button"
+                                                type="submit">{{ __('sign up') }}</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </aside>
 
-                        <aside class="wrapper__list__article">
-                            <h4 class="border_section">{{ __('Advertise') }}</h4>
-                            <a href="#">
-                                <figure>
-                                    <img src="images/news6.jpg" alt="" class="img-fluid">
-                                </figure>
-                            </a>
-                        </aside>
+                        @if ($advert->side_bar_advert_status == 1)
+                            <aside class="wrapper__list__article">
+                                <h4 class="border_section">{{ __('Advertisement') }}</h4>
+                                <a href="{{ $advert->side_bar_advert_url }}">
+                                    <figure>
+                                        <img src="{{ asset($advert->side_bar_advert) }}" alt="" class="img-fluid">
+                                    </figure>
+                                </a>
+                            </aside>
+                        @endif
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="button">{{ __('sign up') }}</button>
                         </div>

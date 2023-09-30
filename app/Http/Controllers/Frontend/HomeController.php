@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advert;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\HomeSectionSetting;
@@ -62,6 +63,8 @@ class HomeController extends Controller
         $socialCounts = SocialCount::where(['status' => 1, 'language' => getLanguage()])->get();
         $mostCommonTags = $this->mostCommonTags();
 
+        $advert = Advert::first();
+
         return view('frontend.home', compact(
             'breakingNews',
             'heroSlider',
@@ -73,7 +76,8 @@ class HomeController extends Controller
             'categorySectionFour',
             'mostViewedPosts',
             'socialCounts',
-            'mostCommonTags'
+            'mostCommonTags',
+            'advert'
             )
         );
     }
@@ -93,7 +97,9 @@ class HomeController extends Controller
         $relatedPosts = News::where('slug', '!=', $news->slug)->where('category_id', $news->category_id)->GetActiveNews()->GetLocalizedLanguage()->take(5)->get();
         $socialCounts = SocialCount::where(['status' => 1, 'language' => getLanguage()])->get();
 
-        return view('frontend.news-details', compact('news', 'recentNews', 'mostCommonTags', 'nextPost', 'previousPost', 'relatedPosts', 'socialCounts'));
+        $advert = Advert::first();
+
+        return view('frontend.news-details', compact('news', 'recentNews', 'mostCommonTags', 'nextPost', 'previousPost', 'relatedPosts', 'socialCounts', 'advert'));
     }
 
     public function news(Request $request)
@@ -127,7 +133,9 @@ class HomeController extends Controller
         $mostCommonTags = $this->mostCommonTags();
         $categories = Category::where(['status' => 1, 'language' => getLanguage()])->get();
 
-        return view('frontend.news', compact('news', 'recentNews', 'mostCommonTags', 'categories'));
+        $advert = Advert::first();
+
+        return view('frontend.news', compact('news', 'recentNews', 'mostCommonTags', 'categories', 'advert'));
     }
 
     public function countViews($news)

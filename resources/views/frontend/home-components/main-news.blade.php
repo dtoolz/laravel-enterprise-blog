@@ -363,11 +363,11 @@
                         </div>
                     </aside>
 
-                    <div class="small_add_banner">
-                        <div class="small_add_banner_img">
-                            <img src="images/placeholder_large.jpg" alt="adds">
-                        </div>
-                    </div>
+                    @if ($advert->home_middle_page_advert_status == 1)
+                        <a href="{{ $advert->home_middle_page_advert_url }}">
+                            <img src="{{ asset($advert->home_middle_page_advert) }}" class="img-fluid" alt="adds">
+                        </a>
+                    @endif
 
                     <aside class="wrapper__list__article mt-5">
                         <h4 class="border_section">{{ @$categorySectionFour->first()->category->name }}</h4>
@@ -543,7 +543,7 @@
                             </div>
                         </aside>
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">{{ __("tags") }}</h4>
+                            <h4 class="border_section">{{ __('tags') }}</h4>
                             <div class="blog-tags p-0">
                                 <ul class="list-inline">
                                     @foreach ($mostCommonTags as $tag)
@@ -557,14 +557,16 @@
                             </div>
                         </aside>
 
-                        <aside class="wrapper__list__article">
-                            <h4 class="border_section">{{ __('Advertise') }}</h4>
-                            <a href="#">
-                                <figure>
-                                    <img src="images/newsimage3.png" alt="" class="img-fluid">
-                                </figure>
-                            </a>
-                        </aside>
+                        @if ($advert->side_bar_advert_status == 1)
+                            <aside class="wrapper__list__article">
+                                <h4 class="border_section">{{ __('Advertise') }}</h4>
+                                <a href="{{ $advert->side_bar_advert_url }}">
+                                    <figure>
+                                        <img src="{{ asset($advert->side_bar_advert) }}" alt="" class="img-fluid">
+                                    </figure>
+                                </a>
+                            </aside>
+                        @endif
 
                         <aside class="wrapper__list__article">
                             <h4 class="border_section">{{ __('newsletter') }}</h4>

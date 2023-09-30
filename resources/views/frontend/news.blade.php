@@ -227,30 +227,33 @@
                             </div>
                         </aside>
 
-                        <aside class="wrapper__list__article">
-                            <h4 class="border_section">{{ __('Advertise') }}</h4>
-                            <a href="#">
-                                <figure>
-                                    <img src="images/newsimage1.png" alt="" class="img-fluid">
-                                </figure>
-                            </a>
-                        </aside>
+                        @if ($advert->side_bar_advert_status == 1)
+                            <aside class="wrapper__list__article">
+                                <h4 class="border_section">{{ __('Advertisement') }}</h4>
+                                <a href="{{ $advert->side_bar_advert_url }}">
+                                    <figure>
+                                        <img src="{{ asset($advert->side_bar_advert) }}" alt=""
+                                            class="img-fluid">
+                                    </figure>
+                                </a>
+                            </aside>
+                        @endif
                     </div>
                 </div>
 
                 <div class="clearfix"></div>
             </div>
         </div>
-        <div class="large_add_banner mb-4">
-            <div class="container">
+        @if ($advert->news_page_advert_status == 1)
+            <div class="container my-5">
                 <div class="row">
-                    <div class="col-12">
-                        <div class="large_add_banner_img">
-                            <img src="images/placeholder_large.jpg" alt="adds">
-                        </div>
+                    <div class="col-8 mx-auto">
+                        <a href="{{ $advert->news_page_advert_url }}">
+                            <img src="{{ asset($advert->news_page_advert) }}" class="img-fluid" alt="adds">
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
     </section>
 @endsection

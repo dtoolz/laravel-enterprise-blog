@@ -60,13 +60,13 @@
                     <div class="form-group">
                         <img src="{{ asset($advert->news_details_page_advert) }}" width="200px" alt="">
                         <br>
-                        <label for="">{{ __('Bottom Page Advert') }}</label>
+                        <label for="">{{ __('News Details Page Advert') }}</label>
                         <input name="news_details_page_advert" type="file" class="form-control" >
                         @error('news_details_page_advert')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
-                        <label for="" class="mt-3">{{ __('Bottom Advert Url') }}</label>
-                        <input name="news_details_page_advert_url" value="{{ $advert->news_details_advert_url }}"  type="text" class="form-control" >
+                        <label for="" class="mt-3">{{ __('News Details Page Advert Url') }}</label>
+                        <input name="news_details_page_advert_url" value="{{ $advert->news_details_page_advert_url }}"  type="text" class="form-control" >
                         @error('news_details_page_advert_url')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -78,16 +78,16 @@
                             <span class="custom-switch-indicator"></span>
                         </label>
                     </div>
-                    <h5 class="text-primary">{{ __('News Page Adverts') }}</h5>
+                    <h5 class="text-primary">{{ __('News Search Page Adverts') }}</h5>
                     <div class="form-group">
                         <img src="{{ asset($advert->news_page_advert) }}" width="200px" alt="">
                         <br>
-                        <label for="">{{ __('Bottom Advert') }}</label>
+                        <label for="">{{ __('News Search Page Advert') }}</label>
                         <input name="news_page_advert" type="file" class="form-control" >
                         @error('news_page_advert')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
-                        <label for="" class="mt-3">{{ __('Bottom Advert Url') }}</label>
+                        <label for="" class="mt-3">{{ __('News Search Page Advert Url') }}</label>
                         <input name="news_page_advert_url"  value="{{ $advert->news_page_advert_url }}" type="text" class="form-control" >
                         @error('news_page_advert_url')
                             <p class="text-danger">{{ $message }}</p>

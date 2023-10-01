@@ -444,18 +444,20 @@
                             <!-- <h4 class="border_section">Sidebar</h4> -->
                             <div class="mb-4">
                                 <div class="widget__form-search-bar  ">
+                                    <form action="{{ route('news') }}" method="GET">
                                     <div class="row no-gutters">
-                                        <div class="col">
-                                            <input class="form-control border-secondary border-right-0 rounded-0"
-                                                value="" placeholder="Search">
-                                        </div>
-                                        <div class="col-auto">
-                                            <button
-                                                class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </div>
+                                            <div class="col">
+                                                <input class="form-control border-secondary border-right-0 rounded-0"
+                                                    value="" name="search" type="search" placeholder="Search">
+                                            </div>
+                                            <div class="col-auto">
+                                                <button type="submit"
+                                                    class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </div>
                                     </div>
+                                </form>
                                 </div>
                             </div>
                             <div class="wrapper__list__article-small">

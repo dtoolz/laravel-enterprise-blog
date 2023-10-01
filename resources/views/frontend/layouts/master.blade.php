@@ -19,14 +19,14 @@
 <body>
 
     <!-- Header news -->
-      @include('frontend.layouts.header')
+    @include('frontend.layouts.header')
     <!-- End Header news -->
 
     @yield('content')
 
 
     <!-- footer news -->
-       @include('frontend.layouts.footer')
+    @include('frontend.layouts.footer')
     <!-- footer news -->
     <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
 
@@ -34,8 +34,26 @@
     @include('sweetalert::alert')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(document).ready(function(){
-            $('#site-language').on('change', function(){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        // Add csrf token in ajax request
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $(document).ready(function() {
+            $('#site-language').on('change', function() {
                 let languageCode = $(this).val();
                 $.ajax({
                     method: 'GET',
@@ -53,26 +71,48 @@
                     }
                 })
             });
-        });
 
-        // Add csrf token in ajax request
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
 
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
+            //newsletter subscription
+            $('.newsletter-form').on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    method: 'POST',
+                    url: "{{ route('newsletter-subscription') }}",
+                    data: $(this).serialize(),
+                    beforeSend: function() {
+                        $('.newsletter-button').text('loading...');
+                        $('.newsletter-button').attr('disabled', true);
+                    },
+                    success: function(data) {
+                        if (data.status === 'success') {
+                            Toast.fire({
+                                icon: 'success',
+                                title: data.message
+                            })
+                            $('.newsletter-form')[0].reset();
+                            $('.newsletter-button').text('sign up');
+                            $('.newsletter-button').attr('disabled', false);
+                        }
+                    },
+                    error: function(data) {
+                        $('.newsletter-button').text('sign up');
+                        $('.newsletter-button').attr('disabled', false);
+                        if (data.status === 422) {
+                            let errors = data.responseJSON.errors;
+                            $.each(errors, function(index, value) {
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: value[0]
+                                })
+                            })
+                        }
+                    }
+                });
+            });
+
+
+        });
     </script>
     @stack('content')
 </body>

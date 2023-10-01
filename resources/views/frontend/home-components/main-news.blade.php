@@ -575,45 +575,17 @@
                                 <h6>
                                     {{ __('The most important world news and events of the day') }}.
                                 </h6>
-                                <p><small>{{ __('Get magzrenvi daily newsletter on your inbox') }}.</small></p>
-                                <div class="input-group ">
-                                    <input type="text" class="form-control" placeholder="Your email address">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">{{ __('sign up') }}</button>
+                                <p><small>{{ __('Get daily newsletter on your inbox') }}.</small></p>
+                                <form action="" class="newsletter-form">
+                                    <div class="input-group ">
+                                        <input type="text" name="email" class="form-control" placeholder="Your email address">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary newsletter-button" type="submit">{{ __('sign up') }}</button>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </aside>
-                    </div>
-                </div>
-                <div class="mx-auto">
-                    <!-- Pagination -->
-                    <div class="pagination-area">
-                        <div class="pagination wow fadeIn animated" data-wow-duration="2s" data-wow-delay="0.5s"
-                            style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
-                            <a href="#">
-                                «
-                            </a>
-                            <a href="#">
-                                1
-                            </a>
-                            <a class="active" href="#">
-                                2
-                            </a>
-                            <a href="#">
-                                3
-                            </a>
-                            <a href="#">
-                                4
-                            </a>
-                            <a href="#">
-                                5
-                            </a>
-
-                            <a href="#">
-                                »
-                            </a>
-                        </div>
                     </div>
                 </div>
 

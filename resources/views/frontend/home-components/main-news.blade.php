@@ -580,7 +580,7 @@
                                     <div class="input-group ">
                                         <input type="text" name="email" class="form-control" placeholder="Your email address">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary newsletter-button" type="submit">{{ __('sign up') }}</button>
+                                            <button class="btn btn-primary newsletter-button" type="submit">{{ __('subscribe') }}</button>
                                         </div>
                                     </div>
                                 </form>

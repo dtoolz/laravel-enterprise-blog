@@ -600,7 +600,7 @@
                                             placeholder="Your email address">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary newsletter-button"
-                                                type="submit">{{ __('sign up') }}</button>
+                                                type="submit">{{ __('subscribe') }}</button>
                                         </div>
                                     </div>
                                 </form>

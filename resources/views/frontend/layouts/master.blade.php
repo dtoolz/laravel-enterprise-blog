@@ -91,12 +91,12 @@
                                 title: data.message
                             })
                             $('.newsletter-form')[0].reset();
-                            $('.newsletter-button').text('sign up');
+                            $('.newsletter-button').text('subscribe');
                             $('.newsletter-button').attr('disabled', false);
                         }
                     },
                     error: function(data) {
-                        $('.newsletter-button').text('sign up');
+                        $('.newsletter-button').text('subscribe');
                         $('.newsletter-button').attr('disabled', false);
                         if (data.status === 422) {
                             let errors = data.responseJSON.errors;

@@ -127,7 +127,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         let url = $(this).attr('href');
-                        console.log(url);
+                        //console.log(url);
                         $.ajax({
                             method: 'DELETE',
                             url: url,

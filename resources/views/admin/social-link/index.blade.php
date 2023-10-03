@@ -22,18 +22,31 @@
                                 <th class="text-center">
                                     #
                                 </th>
-                                <th>{{ __('Email') }}</th>
+                                <th>{{ __('Icon') }}</th>
+                                <th>{{ __('Url') }}</th>
+                                <th>{{ __('Status') }}</th>
                                 <th>{{ __('Action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($subscriber as $sub)
+                            @foreach ($socialLinks as $socialLink)
                             <tr>
+                                <td>{{ ++$loop->index }}</td>
+                                <td><i style="font-size:30px" class="{{ $socialLink->icon }}"></i></td>
+                                <td>{{ $socialLink->url }}</td>
                                 <td>
-                                    <a href="{{ route('admin.social-link.destroy', $sub->id) }}" class="btn btn-danger delete-item"><i class="fas fa-trash-alt"></i></a>
+                                    @if($socialLink->status === 1)
+                                        <span class="badge badge-success">{{ __('Yes') }}</span>
+                                    @else
+                                        <span class="badge badge-warning">{{ __('No') }}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.social-link.edit', $socialLink->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('admin.social-link.destroy', $socialLink->id) }}" class="btn btn-danger delete-item"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -31,16 +31,12 @@
             <li><a class="nav-link" href="{{ route('admin.advert.index') }}"><i class="far fa-square"></i> <span>{{ __('Advertisement') }}</span></a></li>
             <li><a class="nav-link" href="{{ route('admin.language.index') }}"><i class="far fa-square"></i> <span>{{ __('Languages') }}</span></a></li>
             <li><a class="nav-link" href="{{ route('admin.subscribers.index') }}"><i class="far fa-square"></i> <span>{{ __('Subscribers') }}</span></a></li>
-            {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
             <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i>
-                    <span>Forms</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i><span>Footer Settings</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="forms-advanced-form.html">Advanced Form</a></li>
-                    <li><a class="nav-link" href="forms-editor.html">Editor</a></li>
-                    <li><a class="nav-link" href="forms-validation.html">Validation</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.social-link.index') }}">Social Links</a></li>
                 </ul>
-            </li> --}}
+            </li>
         </ul>
     </aside>
 </div>

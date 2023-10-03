@@ -18007,6 +18007,13 @@ body.offcanvas-active {
     text-align: center;
 }
 
+.btn-social {
+    background-color: #fff !important;
+}
+
+.btn-social>i {
+    color: var(--colorPrimary) !important;
+}
 
 
 

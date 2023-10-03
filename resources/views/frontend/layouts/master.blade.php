@@ -17,6 +17,10 @@
 </head>
 
 <body>
+    <!-- Global Variables for User Pages --->
+    @php
+        $socialLinks = \App\Models\SocialLink::where('status', 1)->get();
+    @endphp
 
     <!-- Header news -->
     @include('frontend.layouts.header')

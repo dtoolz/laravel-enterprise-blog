@@ -8,20 +8,15 @@
             <div class="row">
                 <div class="col-sm-6 col-md-8">
                     <div class="topbar-left topbar-right d-flex">
-
                         <ul class="topbar-sosmed p-0">
-                            <li>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                            </li>
+                            @foreach ($socialLinks as $socialLink)
+                                <li>
+                                    <a href="{{ $socialLink->url }}"><i class="{{ $socialLink->icon }}"></i></a>
+                                </li>
+                            @endforeach
                         </ul>
                         <div class="topbar-text">
-                            Friday, May 19, 2023
+                            {{ date('l, F j, Y') }}
                         </div>
                     </div>
                 </div>
@@ -30,7 +25,9 @@
                         <div class="topbar_language">
                             <select id="site-language">
                                 @foreach ($languages as $language)
-                                    <option value="{{ $language->lang }}" {{ getLanguage() === $language->lang ? 'selected' : '' }}>{{ $language->name }}</option>
+                                    <option value="{{ $language->lang }}"
+                                        {{ getLanguage() === $language->lang ? 'selected' : '' }}>{{ $language->name }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -105,7 +102,8 @@
                                                 id="example-search-input4" name="search">
                                         </div>
                                         <div class="col-auto">
-                                            <button type="submit" class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right">
+                                            <button type="submit"
+                                                class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </div>

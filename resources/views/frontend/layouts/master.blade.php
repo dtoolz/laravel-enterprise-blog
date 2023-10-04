@@ -18,8 +18,10 @@
 
 <body>
     <!-- Global Variables for User Pages --->
+
     @php
         $socialLinks = \App\Models\SocialLink::where('status', 1)->get();
+        $footerInformation = \App\Models\FooterInformation::where('language', getLanguage())->first();
     @endphp
 
     <!-- Header news -->

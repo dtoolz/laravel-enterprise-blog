@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdvertController;
 use App\Http\Controllers\Admin\AdminAuthenticationController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FooterInformationController;
 use App\Http\Controllers\Admin\HomeSectionSettingController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\NewsController;
@@ -54,4 +55,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     Route::resource('subscribers', SubscriberController::class);
     //social media links
     Route::resource('social-link', SocialLinkController::class);
+    //social media links
+    Route::resource('footer-information', FooterInformationController::class);
 });

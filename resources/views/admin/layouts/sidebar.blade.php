@@ -35,6 +35,7 @@
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i><span>Footer Settings</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.social-link.index') }}">Social Links</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.footer-information.index') }}">Footer Information</a></li>
                 </ul>
             </li>
         </ul>

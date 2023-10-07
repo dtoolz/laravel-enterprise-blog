@@ -4,11 +4,11 @@
 @section('content')
     <div class="section">
         <div class="section-header">
-            <h1>{{ __('Categories') }}</h1>
+            <h1>{{ __('Footer') }}</h1>
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('All Available Categories') }}</h4>
+                <h4>{{ __('All Footer Grid One Links') }}</h4>
                 <div class="card-header-action">
                     <a href="{{ route('admin.footer-grid-one.create') }}" class="btn btn-primary">
                         <i class="fas fa-plus"></i> {{ __('Create') }}
@@ -27,7 +27,7 @@
                 <div class="tab-content tab-bordered" id="myTab3Content">
                     @foreach ($languages as $language)
                     @php
-                        $categories = \App\Models\Category::where('language', $language->lang)->orderByDesc('id')->get();
+                        $footer = \App\Models\FooterGridOne::where('language', $language->lang)->get();
                     @endphp
                     <div class="tab-pane fade show {{ $loop->index === 0 ? 'active' : '' }}" id="home-{{ $language->lang }}" role="tabpanel" aria-labelledby="home-tab2">
                         <div class="card-body">
@@ -38,36 +38,30 @@
                                             <th class="text-center">
                                                 #
                                             </th>
-                                            <th>{{ __('Category Name') }}</th>
-                                            <th>{{ __('Category Code') }}</th>
-                                            <th>{{ __('Displaying at Navigation') }}</th>
+                                            <th>{{ __('Name') }}</th>
+                                            <th>{{ __('Language Code') }}</th>
+                                            <th>{{ __('Url') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($categories as $category)
+                                        @foreach ($footer as $item)
                                         <tr>
-                                            <td>{{ $category->id }}</td>
-                                            <td>{{ $category->name }}</td>
-                                            <td>{{ $category->language }}</td>
+                                            <td>{{$item->id }}</td>
+                                            <td>{{$item->name }}</td>
+                                            <td>{{$item->language }}</td>
+                                            <td>{{$item->url }}</td>
                                             <td>
-                                                @if ($category->show_at_nav == 1)
-                                                    <span class="badge badge-primary">{{ __('Yes') }}</span>
-                                                @else
-                                                     <span class="badge badge-warning">{{ __('No') }}</span>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if ($category->status == 1)
+                                                @if ($item->status == 1)
                                                     <span class="badge badge-success">{{ __('Yes') }}</span>
                                                 @else
                                                      <span class="badge badge-warning">{{ __('No') }}</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.category.edit', $category->id)}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                                <a href="{{ route('admin.category.destroy', $category->id) }}" class="btn btn-danger delete-item"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="{{ route('admin.footer-grid-one.edit', $item->id)}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                                <a href="{{ route('admin.footer-grid-one.destroy', $item->id) }}" class="btn btn-danger delete-item"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach

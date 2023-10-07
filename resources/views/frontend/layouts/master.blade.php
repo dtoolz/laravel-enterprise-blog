@@ -22,6 +22,7 @@
     @php
         $socialLinks = \App\Models\SocialLink::where('status', 1)->get();
         $footerInformation = \App\Models\FooterInformation::where('language', getLanguage())->first();
+        $footerGridOne = \App\Models\FooterGridOne::where(['status' => 1, 'language' => getLanguage()])->get();
     @endphp
 
     <!-- Header news -->

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminAuthenticationController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FooterGridOneController;
+use App\Http\Controllers\Admin\FooterGridThreeController;
 use App\Http\Controllers\Admin\FooterGridTwoController;
 use App\Http\Controllers\Admin\FooterInformationController;
 use App\Http\Controllers\Admin\HomeSectionSettingController;
@@ -63,4 +64,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     Route::resource('footer-grid-one', FooterGridOneController::class);
     //footer grid two route
     Route::resource('footer-grid-two', FooterGridTwoController::class);
+    //footer grid three route
+    Route::resource('footer-grid-three', FooterGridThreeController::class);
 });

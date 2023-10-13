@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AdvertController;
 use App\Http\Controllers\Admin\AdminAuthenticationController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -69,4 +70,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     //footer grid three route
     Route::post('footer-grid-three-title', [FooterGridThreeController::class, 'handleTitle'])->name('footer-grid-three-title');
     Route::resource('footer-grid-three', FooterGridThreeController::class);
+
+    //About page Route
+    Route::get('about', [AboutController::class, 'index'])->name('about.index');
+    Route::put('about', [AboutController::class, 'update'])->name('about.update');
 });

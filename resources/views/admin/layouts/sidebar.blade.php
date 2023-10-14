@@ -33,7 +33,7 @@
                     <span>Pages</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.about.index') }}">About Page</a></li>
-                    <li><a class="nav-link" href="forms-editor.html">Contact Page</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.contact.index') }}">Contact Page</a></li>
                     <li><a class="nav-link" href="forms-validation.html">Validation</a></li>
                 </ul>
             </li>

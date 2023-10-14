@@ -48,3 +48,6 @@ Route::post('newsletter-subscription', [HomeController::class, 'newsLetterSubscr
 
 //About page route
 Route::get('about', [HomeController::class, 'about'])->name('about');
+
+//Contact page route
+Route::get('contact', [HomeController::class, 'contact'])->name('contact');

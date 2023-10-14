@@ -7,9 +7,11 @@ use App\Models\About;
 use App\Models\Advert;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Contact;
 use App\Models\HomeSectionSetting;
 use App\Models\News;
 use App\Models\SocialCount;
+use App\Models\SocialLink;
 use App\Models\Subscriber;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -229,5 +231,12 @@ class HomeController extends Controller
     {
         $about = About::where('language', getLanguage())->first();
         return view('frontend.about', compact('about'));
+    }
+
+    public function contact()
+    {
+        $contact = Contact::where('language', getLanguage())->first();
+        $socials = SocialLink::where('status', 1)->get();
+        return view('frontend.contact', compact('contact', 'socials'));
     }
 }

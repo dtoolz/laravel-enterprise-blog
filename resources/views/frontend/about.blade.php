@@ -1,175 +1,27 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- breadcrumb -->
-                    <!-- Breadcrumb -->
-                    <ul class="breadcrumbs bg-light mb-4">
-                        <li class="breadcrumbs__item">
-                            <a href="index.html" class="breadcrumbs__url">
-                                <i class="fa fa-home"></i> Home</a>
-                        </li>
-                        <li class="breadcrumbs__item">
-                            <a href="index.html" class="breadcrumbs__url">News</a>
-                        </li>
-                        <li class="breadcrumbs__item breadcrumbs__item--current">
-                            World
-                        </li>
-                    </ul>
-                    <!-- End breadcrumb -->
-
-                    <div class="wrap__about-us">
-                        <h2>Our Mission</h2>
-                        <h4>It is a long established fact that a reader will be distracted</h4>
-                        <p>
-
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been
-                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley
-                            of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries,
-                            but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                            popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages,
-                            and more recently with desktop publishing software like Aldus PageMaker including versions
-                            of
-                            Lorem Ipsum.
-                        </p>
-
-                        <figure class="float-left mr-3">
-                            <img src="images/newsimage1.png" alt="" class="img-fluid">
-                        </figure>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since when an unknown printer took a galley of
-                            type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                            but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                            popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.
-                        </p>
-
-
-
-
-                        <p>
-
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been
-                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley
-                            of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries,
-                            but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                            popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages,
-                            and more recently with desktop publishing software like Aldus PageMaker including versions
-                            of
-                            Lorem Ipsum.
-                        </p>
-                        <div class="clearfix"></div>
-                        <h2>Our Valuable Team Members</h2>
-                        <!-- team member -->
-                        <div class="team-member row">
-                            <div class="col-md-4 col-xl-3">
-                                <figure class="member"> <img src="images/newsimage2.png" class="img-fluid" alt="Image">
-                                    <figcaption>
-                                        <h4>Debora Hilton</h4>
-                                        <small>Editor</small>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"
-                                                        aria-hidden="true"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"
-                                                        aria-hidden="true"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-youtube-play"
-                                                        aria-hidden="true"></i></a>
-                                            </li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"
-                                                        aria-hidden="true"></i></a></li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="col-md-4 col-xl-3">
-                                <figure class="member"> <img src="images/newsimage3.png" class="img-fluid" alt="Image">
-                                    <figcaption>
-                                        <h4>Debora Hilton</h4>
-                                        <small>Editor</small>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"
-                                                        aria-hidden="true"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"
-                                                        aria-hidden="true"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-youtube-play"
-                                                        aria-hidden="true"></i></a>
-                                            </li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"
-                                                        aria-hidden="true"></i></a></li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="col-md-4 col-xl-3">
-                                <figure class="member"> <img src="images/newsimage4.png" class="img-fluid" alt="Image">
-                                    <figcaption>
-                                        <h4>Debora Hilton</h4>
-                                        <small>Publisher</small>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"
-                                                        aria-hidden="true"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"
-                                                        aria-hidden="true"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-youtube-play"
-                                                        aria-hidden="true"></i></a>
-                                            </li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"
-                                                        aria-hidden="true"></i></a></li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="col-md-4 col-xl-3">
-                                <figure class="member"> <img src="images/newsimage5.png" class="img-fluid" alt="Image">
-                                    <figcaption>
-                                        <h4>Debora Hilton</h4>
-                                        <small>Project Manager</small>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"
-                                                        aria-hidden="true"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"
-                                                        aria-hidden="true"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-youtube-play"
-                                                        aria-hidden="true"></i></a>
-                                            </li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"
-                                                        aria-hidden="true"></i></a></li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.
-                        </p>
-
-                    </div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- breadcrumb -->
+                <!-- Breadcrumb -->
+                <ul class="breadcrumbs bg-light mb-4">
+                    <li class="breadcrumbs__item">
+                        <a href="{{ url('/') }}" class="breadcrumbs__url">
+                            <i class="fa fa-home"></i> {{ __('Home') }}</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="javascript:;" class="breadcrumbs__url">{{ __('About') }}</a>
+                    </li>
+                </ul>
+                <!-- End breadcrumb -->
+                <div class="wrap__about-us">
+                    {!! @$about->content !!}
                 </div>
-
-
             </div>
         </div>
-    </section>
+    </div>
+</section>
 @endsection

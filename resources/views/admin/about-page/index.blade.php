@@ -63,5 +63,15 @@
                 });
             @endforeach
         @endif
+
+        if (jQuery().summernote) {
+            @foreach ($languages as $language)
+                $(".summernote-{{ $language->lang }}").summernote({
+                    dialogsInBody: true,
+                    minHeight: 250,
+                });
+            @endforeach
+
+        }
     </script>
 @endpush

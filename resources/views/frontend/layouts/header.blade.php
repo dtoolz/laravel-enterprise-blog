@@ -66,7 +66,7 @@
                             <a class="nav-link active" href="index.html">home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="about-us.html"> about </a>
+                            <a class="nav-link" href="{{ route('about') }}">about</a>
                         </li>
                         <li class="nav-item dropdown has-megamenu">
                             <a class="nav-link" href="blog.html">blog </a>

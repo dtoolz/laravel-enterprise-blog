@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-//invokable controller to retrieve selected user preferred langauage to store in the session
+//invokable controller to retrieve selected user preferred language to store in the session
 Route::get('language', LanguageController::class)->name('language');
 
 //news route
@@ -51,3 +51,4 @@ Route::get('about', [HomeController::class, 'about'])->name('about');
 
 //Contact page route
 Route::get('contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('contact', [HomeController::class, 'handleContactForm'])->name('contact.submit');

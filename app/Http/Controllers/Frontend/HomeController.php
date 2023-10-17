@@ -11,6 +11,7 @@ use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\HomeSectionSetting;
 use App\Models\News;
+use App\Models\ReceivedMail;
 use App\Models\SocialCount;
 use App\Models\SocialLink;
 use App\Models\Subscriber;
@@ -250,12 +251,16 @@ class HomeController extends Controller
             'message' => ['required', 'max:500']
         ]);
 
-        $toMail = Contact::where('language', 'en')->first();
         try{
             $toMail = Contact::where('language', 'en')->first();
             //sending the mail
             Mail::to($toMail->email)->send(new ContactMail($request->subject, $request->message, $request->email));
-
+            //saving sent mails to db
+            $mail = new ReceivedMail();
+            $mail->email = $request->email;
+            $mail->subject = $request->subject;
+            $mail->message = $request->message;
+            $mail->save();
         }catch(\Exception $e){
             toast(__($e->getMessage()));
         }

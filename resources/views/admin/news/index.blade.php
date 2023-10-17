@@ -97,14 +97,14 @@
                                                             <span class="custom-switch-indicator"></span>
                                                         </label>
                                                     </td>
-                                                    <td>
+                                                    <td class="d-flex">
                                                         <a href="{{ route('admin.news.edit', $item->id) }}"
-                                                            class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                                            class="btn btn-primary mx-1"><i class="fas fa-edit"></i></a>
                                                         <a href="{{ route('admin.news.destroy', $item->id) }}"
-                                                            class="btn btn-danger delete-item"><i
+                                                            class="btn btn-danger delete-item mx-1"><i
                                                                 class="fas fa-trash-alt"></i></a>
                                                         <a href="{{ route('admin.news-copy', $item->id) }}"
-                                                            class="btn btn-primary"><i class="fas fa-copy"></i></i></a>
+                                                            class="btn btn-primary mx-1"><i class="fas fa-copy"></i></i></a>
                                                     </td>
                                                 </tr>
                                             @endforeach

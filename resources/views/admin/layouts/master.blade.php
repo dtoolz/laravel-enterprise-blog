@@ -39,7 +39,9 @@
     </script>
     <!-- /END GA -->
 </head>
-
+@php
+    $unreadContactMessages = \App\Models\ReceivedMail::where('seen', 0)->count();
+@endphp
 <body>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">

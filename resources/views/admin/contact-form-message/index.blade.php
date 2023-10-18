@@ -113,7 +113,8 @@
             "columnDefs": [{
                 "sortable": false,
                 "targets": [1]
-            }]
+            }],
+            "order": [[0, "desc"]]
         });
     </script>
 @endpush

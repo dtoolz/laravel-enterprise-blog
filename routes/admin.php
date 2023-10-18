@@ -83,4 +83,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
 
     //contact form messages
     Route::get('contact-form-message', [ContactFormMessageController::class, 'index'])->name('contact-form-message.index');
+    Route::post('contact-form-send-reply', [ContactFormMessageController::class, 'sendReply'])->name('contact-form.send-reply');
 });

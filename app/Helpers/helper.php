@@ -51,3 +51,14 @@ function formatHugeNumbers(int $number): String
     return round($number / 1000000, 1).'M';
    }
 }
+
+//active sidebar function
+function setSidebarActive(array $routes): ?string
+{
+    foreach($routes as $route){
+      if(request()->routeIs($route)){
+        return 'active';
+      }
+    }
+    return '';
+}

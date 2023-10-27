@@ -39,13 +39,15 @@
                                             @method('PUT')
                                             <div class="form-group">
                                                 <label for="">{{ __('Website Name') }}</label>
-                                                <input type="text" name="site_name" class="form-control">
+                                                <input type="text" name="site_name" class="form-control" value="{{ $settings['site_name'] }}">
                                             </div>
                                             <div class="form-group">
+                                                <img src="{{ asset($settings['site_logo']) }}" alt="" width="150"><br>
                                                 <label for="">{{ __('Website Logo') }}</label>
                                                 <input type="file" name="site_logo" class="form-control">
                                             </div>
                                             <div class="form-group">
+                                                <img src="{{ asset($settings['site_favicon']) }}" alt="" width="150"><br>
                                                 <label for="">{{ __('Website Favicon') }}</label>
                                                 <input type="file" name="site_favicon" class="form-control">
                                             </div>

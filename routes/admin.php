@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\HomeSectionSettingController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SocialCountController;
 use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\Admin\SubscriberController;
@@ -84,4 +85,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     //contact form messages
     Route::get('contact-form-message', [ContactFormMessageController::class, 'index'])->name('contact-form-message.index');
     Route::post('contact-form-send-reply', [ContactFormMessageController::class, 'sendReply'])->name('contact-form.send-reply');
+
+    //general settings route
+    Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
+    Route::put('general-setting', [SettingController::class, 'updateGeneralSetting'])->name('general-setting.update');
 });

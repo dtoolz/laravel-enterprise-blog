@@ -26,7 +26,6 @@
                 <ul class="dropdown-menu">
                     <li class="{{ setSidebarActive(['admin.news.*']) }}" ><a class="nav-link" href="{{ route('admin.news.index') }}">{{ __('All News') }}</a></li>
                     <li><a class="nav-link" href="forms-editor.html">{{ __('Editor') }}</a></li>
-
                 </ul>
             </li>
             <li class="dropdown {{ setSidebarActive(['admin.about.*', 'admin.contact.*']) }}">
@@ -35,7 +34,6 @@
                 <ul class="dropdown-menu">
                     <li class="{{ setSidebarActive(['admin.about.*']) }}" ><a class="nav-link" href="{{ route('admin.about.index') }}">{{ __('About Page') }}</a></li>
                     <li class="{{ setSidebarActive(['admin.contact.*']) }}" ><a class="nav-link" href="{{ route('admin.contact.index') }}">{{ __('Contact Page') }}</a></li>
-
                 </ul>
             </li>
             <li class="{{ setSidebarActive(['admin.social-count.*']) }}"><a class="nav-link" href="{{ route('admin.social-count.index') }}"><i class="far fa-square"></i>
@@ -73,6 +71,8 @@
                     </li>
                 </ul>
             </li>
+            <li class="{{ setSidebarActive(['admin.setting.*']) }}"><a class="nav-link" href="{{ route('admin.setting.index') }}"><i class="far fa-square"></i>
+                <span>{{ __('Settings') }}</span></a></li>
         </ul>
     </aside>
 </div>

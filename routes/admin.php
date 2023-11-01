@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RolePermissionController;
+use App\Http\Controllers\Admin\RoleUserController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SocialCountController;
 use App\Http\Controllers\Admin\SocialLinkController;
@@ -100,4 +101,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     Route::get('role/{id}/edit', [RolePermissionController::class, 'edit'])->name('role.edit');
     Route::put('role/{id}/edit', [RolePermissionController::class, 'update'])->name('role.update');
     Route::delete('role/{id}/destroy', [RolePermissionController::class, 'destroy'])->name('role.destroy');
+
+    // Role User Routes
+    Route::resource('role-users', RoleUserController::class);
 });

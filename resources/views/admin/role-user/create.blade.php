@@ -7,7 +7,7 @@
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('Create Role/Permission') }}</h4>
+                <h4>{{ __('Create User with Role/Permission') }}</h4>
             </div>
             <div class="card-body">
                 <form action="{{ route('admin.role-users.store') }}" method="POST">

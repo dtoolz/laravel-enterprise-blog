@@ -75,7 +75,7 @@
                                       'admin.role.*'
                                       ])
                                  }}">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i><span>{{ __('Role/Permission Mgt') }}</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i><span>{{ __('Access Mgt') }}</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setSidebarActive(['admin.role-user.*']) }}"><a class="nav-link" href="{{ route('admin.role-users.index') }}">{{ __('Roles Users') }}</a></li>
                     <li class="{{ setSidebarActive(['admin.role.*']) }}"><a class="nav-link" href="{{ route('admin.role.index') }}">{{ __('Roles and Permissions') }}</a></li>

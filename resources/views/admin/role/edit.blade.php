@@ -23,7 +23,7 @@
                     <hr>
                     @foreach ($permissions as $groupName => $permission)
                         <div class="form-group">
-                            <h6>{{ $groupName }}</h6>
+                            <h6 class="text-primary">{{ $groupName }}</h6>
                             <div class="row">
                                 @foreach ($permission as $item)
                                     <div class="col-md-2">
@@ -38,8 +38,9 @@
                                 @endforeach
                             </div>
                         </div>
+                        <hr>
                     @endforeach
-                    <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
                 </form>
             </div>
         </div>

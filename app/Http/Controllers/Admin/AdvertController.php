@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class AdvertController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:advertisement index,admin'])->only(['index']);
+        $this->middleware(['permission:advertisement update,admin'])->only(['update']);
+    }
+
     use FileUploadTrait;
     /**
      * Display a listing of the resource.
@@ -20,37 +26,6 @@ class AdvertController extends Controller
         return view('admin.advert.index', compact('advert'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -90,11 +65,4 @@ class AdvertController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

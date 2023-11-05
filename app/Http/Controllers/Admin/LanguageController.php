@@ -11,6 +11,14 @@ use App\Http\Requests\AdminLanguageUpdateRequest;
 
 class LanguageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:languages index,admin'])->only(['index']);
+        $this->middleware(['permission:languages create,admin'])->only(['create', 'store']);
+        $this->middleware(['permission:languages update,admin'])->only(['edit', 'update']);
+        $this->middleware(['permission:languages delete,admin'])->only(['destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      */

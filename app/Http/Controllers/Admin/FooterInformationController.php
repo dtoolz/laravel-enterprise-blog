@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class FooterInformationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:footer index,admin'])->only(['index']);
+        $this->middleware(['permission:footer create,admin'])->only(['store']);
+    }
+
     use FileUploadTrait;
     /**
      * Display a listing of the resource.

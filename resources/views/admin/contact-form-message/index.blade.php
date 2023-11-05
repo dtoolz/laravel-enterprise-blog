@@ -8,11 +8,6 @@
         <div class="card card-primary">
             <div class="card-header">
                 <h4>{{ __('All Mails Sent From the Contact Form') }}</h4>
-                <div class="card-header-action">
-                    <a href="{{ route('admin.social-link.create') }}" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> {{ __('Create') }}
-                    </a>
-                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -47,8 +42,6 @@
                                         <a class="btn btn-primary mx-1 text-white" data-toggle="modal"
                                             data-target="#exampleModal-{{ $message->id }}"><i
                                                 class="fas fa-envelope"></i></a>
-                                        <a class="btn btn-danger delete-item mx-1 text-white"><i
-                                                class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

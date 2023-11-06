@@ -3,14 +3,12 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('admin.Pending News') }}</h1>
+            <h1>{{ __('Pending News') }}</h1>
         </div>
-
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('admin.All Pending') }}</h4>
+                <h4>{{ __('All Unapproved News') }}</h4>
             </div>
-
             @php
                     $news = \App\Models\News::with('category')
                     ->where('is_approved', 0)
@@ -63,21 +61,16 @@
                                     </td>
                                 </tr>
                             @endforeach
-
-
                         </tbody>
                     </table>
                 </div>
             </div>
-
-
         </div>
     </section>
 @endsection
 
 @push('scripts')
     <script>
-
         $("#table").dataTable({
             "columnDefs": [
                 {
@@ -90,36 +83,31 @@
             ]
         });
 
-
-        // $(document).ready(function(){
-
-        //     $('#approve-input').on('change', function(){
-        //         $('#approve_form').submit();
-        //     });
-
-        //     $('#approve_form').on('submit', function(e){
-        //         e.preventDefault();
-
-        //         let data = $(this).serialize();
-        //         $.ajax({
-        //             method: 'PUT',
-        //
-        //             data: data,
-        //             success: function(data){
-        //                 if(data.status === 'success'){
-        //                     Toast.fire({
-        //                         icon: 'success',
-        //                         title: data.message
-        //                     })
-
-        //                     window.location.reload();
-        //                 }
-        //             },
-        //             error: function(error){
-        //                 console.log(error);
-        //             }
-        //         })
-        //     })
-        // })
+        $(document).ready(function(){
+            $('#approve-input').on('change', function(){
+                $('#approve_form').submit();
+            });
+            $('#approve_form').on('submit', function(e){
+                e.preventDefault();
+                let data = $(this).serialize();
+                $.ajax({
+                    method: 'PUT',
+                    url: "{{ route('admin.approve.news') }}",
+                    data: data,
+                    success: function(data){
+                        if(data.status === 'success'){
+                            Toast.fire({
+                                icon: 'success',
+                                title: data.message
+                            })
+                            window.location.reload();
+                        }
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
+                })
+            })
+        })
     </script>
 @endpush

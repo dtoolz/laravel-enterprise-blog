@@ -11,6 +11,7 @@ use App\Models\News;
 use App\Models\Tag;
 use App\Traits\FileUploadTrait;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,6 +48,15 @@ class NewsController extends Controller
     {
         $categories = Category::where('language', $request->lang)->get();
         return $categories;
+    }
+
+    function approveNews(Request $request): Response
+    {
+        $news = News::findOrFail($request->id);
+        $news->is_approved = $request->is_approve;
+        $news->save();
+
+        return response(['status' => 'success', 'message' => __('Updated Successfully')]);
     }
 
     /**

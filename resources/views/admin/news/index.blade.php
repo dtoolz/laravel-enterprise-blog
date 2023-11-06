@@ -29,6 +29,7 @@
                     @foreach ($languages as $language)
                         @php
                             $news = \App\Models\News::where('language', $language->lang)
+                                ->where('is_approved', 1)
                                 ->orderBy('id', 'DESC')
                                 ->get();
                         @endphp

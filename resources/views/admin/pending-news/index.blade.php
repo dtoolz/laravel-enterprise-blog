@@ -10,10 +10,18 @@
                 <h4>{{ __('All Unapproved News') }}</h4>
             </div>
             @php
+                if(canAccess(['news all-access'])){
                     $news = \App\Models\News::with('category')
                     ->where('is_approved', 0)
                     ->orderBy('id', 'DESC')
                     ->get();
+                }else {
+                    $news = \App\Models\News::with('category')
+                    ->where('is_approved', 0)
+                    ->where('author_id', auth()->guard('admin')->user()->id)
+                    ->orderBy('id', 'DESC')
+                    ->get();
+                }
             @endphp
             <div class="card-body">
                 <div class="table-responsive">

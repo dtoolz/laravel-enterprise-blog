@@ -130,6 +130,9 @@
                         href="{{ route('admin.setting.index') }}"><i class="far fa-square"></i>
                         <span>{{ __('Settings') }}</span></a></li>
             @endif
+            <li class="{{ setSidebarActive(['admin.localization.*']) }}"><a class="nav-link"
+                href="{{ route('admin.localization.index') }}"><i class="far fa-square"></i>
+                <span>{{ __('Localization') }}</span></a></li>
         </ul>
     </aside>
 </div>

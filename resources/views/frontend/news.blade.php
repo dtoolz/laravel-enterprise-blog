@@ -19,13 +19,11 @@
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-
                     <div class="blog_page_search">
                         <form action="{{ route('news') }}" method="GET">
                             <div class="row">

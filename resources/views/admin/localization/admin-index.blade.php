@@ -4,16 +4,11 @@
 @section('content')
     <div class="section">
         <div class="section-header">
-            <h1>{{ __('General Localization') }}</h1>
+            <h1>{{ __('Admin Localization') }}</h1>
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('Localization of All Static Information') }}</h4>
-                <div class="card-header-action">
-                    <a href="{{ route('admin.category.create') }}" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> {{ __('Create') }}
-                    </a>
-                </div>
+                <h4>{{ __('Localization for Admin Panel') }}</h4>
             </div>
             <div class="card-body">
                 <ul class="nav nav-tabs" id="myTab2" role="tablist">
@@ -27,6 +22,33 @@
                 <div class="tab-content tab-bordered" id="myTab3Content">
                     @foreach ($languages as $language)
                     <div class="tab-pane fade show {{ $loop->index === 0 ? 'active' : '' }}" id="home-{{ $language->lang }}" role="tabpanel" aria-labelledby="home-tab2">
+                        <div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <form method="POST" action="{{ route('admin.extract-localization-string') }}">
+                                            @csrf
+                                            <input type="hidden" name="directory"
+                                                value="{{ resource_path('views/admin') }}">
+                                            <input type="hidden" name="language_code" value="{{ $language->lang }}">
+                                            <input type="hidden" name="file_name" value="admin">
+                                            <button type="submit"
+                                                class="btn btn-primary mx-3">{{ __('Generate Strings') }}</button>
+                                        </form>
+
+                                        <form class="translate-from" method="POST"
+                                            action="">
+                                            <input type="hidden" name="language_code" value="{{ $language->lang }}">
+                                            <input type="hidden" name="file_name" value="admin">
+                                            <button type="submit"
+                                                class="btn btn-dark mx-3 translate-button">{{ __('Translate Strings') }}</button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped" id="table-{{ $language->lang }}">

@@ -36,7 +36,7 @@
                                                 class="btn btn-primary mx-3">{{ __('Generate Strings') }}</button>
                                         </form>
 
-                                        <form class="translate-from" method="POST"
+                                        <form class="translate-form" method="POST"
                                             action="">
                                             <input type="hidden" name="language_code" value="{{ $language->lang }}">
                                             <input type="hidden" name="file_name" value="admin">

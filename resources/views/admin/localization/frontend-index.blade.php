@@ -14,87 +14,104 @@
                 <ul class="nav nav-tabs" id="myTab2" role="tablist">
                     @foreach ($languages as $language)
                         <li class="nav-item">
-                            <a class="nav-link {{ $loop->index === 0 ? 'active' : '' }}" id="home-tab2" data-toggle="tab" href="#home-{{ $language->lang }}" role="tab"
-                                aria-controls="home" aria-selected="true">{{ $language->name }}</a>
+                            <a class="nav-link {{ $loop->index === 0 ? 'active' : '' }}" id="home-tab2" data-toggle="tab"
+                                href="#home-{{ $language->lang }}" role="tab" aria-controls="home"
+                                aria-selected="true">{{ $language->name }}</a>
                         </li>
                     @endforeach
                 </ul>
                 <div class="tab-content tab-bordered" id="myTab3Content">
                     @foreach ($languages as $language)
-                    <div class="tab-pane fade show {{ $loop->index === 0 ? 'active' : '' }}" id="home-{{ $language->lang }}" role="tabpanel" aria-labelledby="home-tab2">
+                        <div class="tab-pane fade show {{ $loop->index === 0 ? 'active' : '' }}"
+                            id="home-{{ $language->lang }}" role="tabpanel" aria-labelledby="home-tab2">
 
-                        <div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <form method="POST" action="{{ route('admin.extract-localization-string') }}">
-                                            @csrf
-                                            <input type="hidden" name="directory"
-                                                value="{{ resource_path('views/frontend') }}">
-                                            <input type="hidden" name="language_code" value="{{ $language->lang }}">
-                                            <input type="hidden" name="file_name" value="frontend">
-                                            <button type="submit"
-                                                class="btn btn-primary mx-3">{{ __('Generate Strings') }}</button>
-                                        </form>
+                            <div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <form method="POST" action="{{ route('admin.extract-localization-string') }}">
+                                                @csrf
+                                                <input type="hidden" name="directory"
+                                                    value="{{ resource_path('views/frontend') }}">
+                                                <input type="hidden" name="language_code" value="{{ $language->lang }}">
+                                                <input type="hidden" name="file_name" value="frontend">
+                                                <button type="submit"
+                                                    class="btn btn-primary mx-3">{{ __('Generate Strings') }}</button>
+                                            </form>
 
-                                        <form class="translate-form" method="POST"
-                                            action="">
-                                            <input type="hidden" name="language_code" value="{{ $language->lang }}">
-                                            <input type="hidden" name="file_name" value="frontend">
-                                            <button  type="submit"
-                                                class="btn btn-dark mx-3 translate-button">{{ __('Translate Strings') }}</button>
-                                        </form>
+                                            <form class="translate-form" method="POST"
+                                                action="{{ route('admin.translate-string') }}">
+                                                <input type="hidden" name="language_code" value="{{ $language->lang }}">
+                                                <input type="hidden" name="file_name" value="frontend">
+                                                <button type="submit"
+                                                    class="btn btn-dark mx-3 translate-button">{{ __('Translate Strings') }}</button>
+                                            </form>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
+<<<<<<< HEAD
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" id="table-{{ $language->lang }}">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">
+                                                    #
+                                                </th>
+                                                <th class="text-center">
+                                                    {{ __('String') }}
+                                                </th>
+                                                <th class="text-center">
+                                                    {{ __('Translation') }}
+                                                </th>
+                                                <th class="text-center">
+                                                    {{ __('Action') }}
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $translatedValues = trans('frontend', [], $language->lang);
+                                            @endphp
+
+                                            @foreach ($translatedValues as $key => $value)
+                                                <tr>
+                                                    <td>{{ ++$loop->index }}</td>
+                                                    <td>{{ $key }}</td>
+                                                    <td>{{ $value }}</td>
+                                                    <td>
+                                                        <button data-languagecode="{{ $language->lang }}"
+                                                            data-key="{{ $key }}"
+                                                            data-value="{{ $value }}" data-filename="frontend"
+                                                            type="button" class="btn btn-primary modal_btn"
+                                                            data-toggle="modal" data-target="#exampleModal">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+=======
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped" id="table-{{ $language->lang }}">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">
-                                                #
-                                            </th>
-                                            <th class="text-center">
-                                                {{ __('String') }}
-                                            </th>
-                                            <th class="text-center">
-                                                {{ __('Translation') }}
-                                            </th>
-                                            <th class="text-center">
-                                                {{ __('Action') }}
-                                            </th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php
-                                        $translatedValues = trans('frontend', [], $language->lang);
-                                        @endphp
 
-                                    @foreach ($translatedValues as $key => $value)
-                                        <tr>
-                                            <td>{{ ++$loop->index }}</td>
-                                            <td>{{ $key }}</td>
-                                            <td>{{ $value }}</td>
-                                            <td>
-                                                <button data-languagecode="{{ $language->lang }}"
-                                                    data-key="{{ $key }}"
-                                                    data-value="{{ $value }}" data-filename="frontend"
-                                                    type="button" class="btn btn-primary modal_btn"
-                                                    data-toggle="modal" data-target="#exampleModal">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
                                     </tbody>
                                 </table>
+>>>>>>> parent of af8e42d (showing contents of the generated files that contains the localization strings on the admin panel)
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -102,37 +119,37 @@
         </div>
     </div>
 
-     <!-- Modal -->
-     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-     <div class="modal-dialog" role="document">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <h5 class="modal-title" id="exampleModalLabel">{{ __('Edit Value') }}</h5>
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                 </button>
-             </div>
-             <div class="modal-body">
-                 <form action="{{ route('admin.update-language-string') }}" method="POST">
-                     @csrf
-                     <div class="form-group">
-                         <label for="">{{ __('Value') }}</label>
-                         <input type="text" name="value" class="form-control" value="">
-                         <input type="hidden" name="language_code" class="form-control" value="">
-                         <input type="hidden" name="key" class="form-control" value="">
-                         <input type="hidden" name="file_name" class="form-control" value="">
-                     </div>
-                     <div class="modal-footer">
-                         <button type="button" class="btn btn-secondary"
-                             data-dismiss="modal">{{ __('Close') }}</button>
-                         <button type="submit" class="btn btn-primary">{{ __('Save changes') }}</button>
-                     </div>
-                 </form>
-             </div>
-         </div>
-     </div>
- </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('Edit Value') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('admin.update-language-string') }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="">{{ __('Value') }}</label>
+                            <input type="text" name="value" class="form-control" value="">
+                            <input type="hidden" name="language_code" class="form-control" value="">
+                            <input type="hidden" name="key" class="form-control" value="">
+                            <input type="hidden" name="file_name" class="form-control" value="">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                data-dismiss="modal">{{ __('Close') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('Save changes') }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 
@@ -170,9 +187,9 @@
                 let formData = $(this).serialize();
                 $.ajax({
                     method: 'POST',
-                    url: "",
+                    url: "{{ route('admin.translate-string') }}",
                     data: formData,
-                    beforeSend: function(){
+                    beforeSend: function() {
                         $('.translate-button').text("Translating Please Wait...")
                         $('.translate-button').prop('disabled', true);
                     },
@@ -184,7 +201,7 @@
                                 'success'
                             )
                             window.location.reload();
-                        }else {
+                        } else {
                             Swal.fire(
                                 'Error!',
                                 data.message,

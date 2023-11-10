@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Language;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use RecursiveDirectoryIterator;
@@ -71,4 +72,20 @@ class LocalizationController extends Controller
 
         return redirect()->back();
     }
+
+
+    public function updateLanguageString(Request $request) : RedirectResponse
+    {
+        $languageStrings = trans($request->file_name, [], $request->language_code);
+        $languageStrings[$request->key] = $request->value;
+
+        $phpArray = "<?php\n\nreturn " . var_export($languageStrings, true) . ";\n";
+
+        file_put_contents(lang_path($request->language_code.'/'.$request->file_name.'.php'), $phpArray);
+
+        toast(__('Updated Successfully!'), 'success');
+
+        return redirect()->back();
+    }
+
 }

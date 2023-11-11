@@ -10,10 +10,10 @@
                     <ul class="breadcrumbs bg-light mb-4">
                         <li class="breadcrumbs__item">
                             <a href="{{ url('/') }}" class="breadcrumbs__url">
-                                <i class="fa fa-home"></i> {{ __('Home') }}</a>
+                                <i class="fa fa-home"></i> {{ __('frontend.Home') }}</a>
                         </li>
                         <li class="breadcrumbs__item">
-                            <a href="javascript:;" class="breadcrumbs__url">{{ __('Contact') }}</a>
+                            <a href="javascript:;" class="breadcrumbs__url">{{ __('frontend.Contact') }}</a>
                         </li>
                     </ul>
                 </div>
@@ -28,13 +28,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h5>{{ __('contact us') }}</h5>
+                    <h5>{{ __('frontend.contact us') }}</h5>
                     <form action="{{ route('contact.submit') }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group form-group-name">
-                                    <label>{{ __('Email') }}<span class="required"></span></label>
+                                    <label>{{ __('frontend.Email') }}<span class="required"></span></label>
                                     <input type="email" class="form-control" name="email" required="">
                                     @error('email')
                                         <p class="text-danger">{{ $message }}</p>
@@ -43,7 +43,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group form-group-name">
-                                    <label>{{ __('Subject') }}<span class="required"></span></label>
+                                    <label>{{ __('frontend.Subject') }}<span class="required"></span></label>
                                     <input type="text" class="form-control" name="subject" required="">
                                     @error('subject')
                                         <p class="text-danger">{{ $message }}</p>
@@ -52,21 +52,21 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>{{ __('Your Message') }}</label>
+                                    <label>{{ __('frontend.Your Message') }}</label>
                                     <textarea class="form-control" rows="8" name="message"></textarea>
                                     @error('message')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="form-group mb-4">
-                                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('frontend.Submit') }}</button>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="col-md-4">
-                    <h5>{{ __('Info location') }}</h5>
+                    <h5>{{ __('frontend.Info location') }}</h5>
                     <div class="wrap__contact-form-office">
                         <ul class="list-unstyled">
                             <li>
@@ -89,7 +89,7 @@
                             </li>
                         </ul>
                         <div class="social__media">
-                            <h5>{{ __('find us') }}</h5>
+                            <h5>{{ __('frontend.find us') }}</h5>
                             <ul class="list-inline">
                                 @foreach ($socials as $social)
                                     <li class="list-inline-item-contact mx-1">

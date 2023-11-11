@@ -4,7 +4,7 @@
             @csrf
             @method('PUT')
             <div class="form-group">
-                <label for="">{{ __('Website Name') }}</label>
+                <label for="">{{ __('admin.Website Name') }}</label>
                 <input type="text" name="site_name" class="form-control" value="{{ $settings['site_name'] }}">
             </div>
             @error('site_name')
@@ -12,7 +12,7 @@
             @enderror
             <div class="form-group">
                 <img src="{{ asset($settings['site_logo']) }}" alt="" width="150"><br>
-                <label for="">{{ __('Website Logo') }}</label>
+                <label for="">{{ __('admin.Website Logo') }}</label>
                 <input type="file" name="site_logo" class="form-control">
             </div>
             @error('site_logo')
@@ -20,13 +20,13 @@
             @enderror
             <div class="form-group">
                 <img src="{{ asset($settings['site_favicon']) }}" alt="" width="150"><br>
-                <label for="">{{ __('Website Favicon') }}</label>
+                <label for="">{{ __('admin.Website Favicon') }}</label>
                 <input type="file" name="site_favicon" class="form-control">
             </div>
             @error('site_favicon')
                 <p class="text-danger">{{ $message }}</p>
             @enderror
-            <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+            <button type="submit" class="btn btn-primary">{{ __('admin.Save') }}</button>
         </form>
     </div>
 </div>

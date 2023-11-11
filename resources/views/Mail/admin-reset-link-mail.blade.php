@@ -348,8 +348,8 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <p>Hi there,</p>
-                        <p>Here is your password reset link </p>
+                        <p>{{ __('Hi there') }},</p>
+                        <p>{{ __('Here is your password reset link') }} </p>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                           <tbody>
                             <tr>
@@ -357,7 +357,7 @@
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                   <tbody>
                                     <tr>
-                                      <td> <a href="{{ route('admin.reset-password', ['token' => $token, 'email' => $email]) }}" target="_blank">Click Here To Reset</a> </td>
+                                      <td> <a href="{{ route('admin.reset-password', ['token' => $token, 'email' => $email]) }}" target="_blank">{{ __('Click Here To Reset') }}</a> </td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -365,8 +365,8 @@
                             </tr>
                           </tbody>
                         </table>
-                        <p>This is a really simple email template. Its sole purpose is to get the recipient to click the button with no distractions.</p>
-                        <p>Good luck! Hope it works.</p>
+                        <p>{{ __('frontend.This is a really simple email template. Its sole purpose is to get the recipient to click the button with no distractions') }}.</p>
+                        <p>{{ __('frontend.Good luck! Hope it works') }}.</p>
                       </td>
                     </tr>
                   </table>

@@ -20,7 +20,7 @@
                                             <ul class="list-inline">
                                                 <li class="list-inline-item">
                                                     <span class="text-primary">
-                                                        {{ __('by') }} {{ $news->author->name }}
+                                                        {{ __('frontend.by') }} {{ $news->author->name }}
                                                     </span>
                                                 </li>
                                                 <li class="list-inline-item">

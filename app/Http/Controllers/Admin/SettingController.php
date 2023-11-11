@@ -49,7 +49,7 @@ class SettingController extends Controller
             );
         }
 
-        toast(__('Updated Successfully!'), 'success');
+        toast(__('admin.Updated Successfully!'), 'success');
 
         return redirect()->back();
     }
@@ -74,7 +74,7 @@ class SettingController extends Controller
         );
 
 
-        toast(__('Updated Successfully!'), 'success');
+        toast(__('admin.Updated Successfully!'), 'success');
 
         return redirect()->back();
     }
@@ -90,7 +90,7 @@ class SettingController extends Controller
             ['value' => $request->site_color]
         );
 
-        toast(__('Updated Successfully!'), 'success');
+        toast(__('admin.Updated Successfully!'), 'success');
 
         return redirect()->back();
     }

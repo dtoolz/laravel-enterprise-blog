@@ -3,11 +3,11 @@
 @section('content')
     <div class="section">
         <div class="section-header">
-            <h1>{{ __('Contact Form Messages') }}</h1>
+            <h1>{{ __('admin.Contact Form Messages') }}</h1>
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('All Mails Sent From the Contact Form') }}</h4>
+                <h4>{{ __('admin.All Mails Sent From the Contact Form') }}</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -17,11 +17,11 @@
                                 <th class="text-center">
                                     #
                                 </th>
-                                <th>{{ __('Email') }}</th>
-                                <th>{{ __('Subject') }}</th>
-                                <th>{{ __('Message') }}</th>
-                                <th>{{ __('Replied') }}</th>
-                                <th>{{ __('Action') }}</th>
+                                <th>{{ __('admin.Email') }}</th>
+                                <th>{{ __('admin.Subject') }}</th>
+                                <th>{{ __('admin.Message') }}</th>
+                                <th>{{ __('admin.Replied') }}</th>
+                                <th>{{ __('admin.Action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,7 +59,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">{{ __('Reply To') }}: {{ $message->email }}
+                        <h5 class="modal-title" id="exampleModalLabel">{{ __('admin.Reply To') }}: {{ $message->email }}
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -69,7 +69,7 @@
                         <form action="{{ route('admin.contact-form.send-reply') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label for="">{{ __('Subject') }}</label>
+                                <label for="">{{ __('admin.Subject') }}</label>
                                 <input type="text" name="subject" id="" class="form-control">
                                 <input type="hidden" name="email" value="{{ $message->email }}" id=""
                                     class="form-control">
@@ -80,7 +80,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">{{ __('Message') }}</label>
+                                <label for="">{{ __('admin.Message') }}</label>
                                 <textarea name="message" class="form-control" style="height: 200px !important;"></textarea>
                                 @error('message')
                                     <p class="text-danger">{{ $message }}</p>
@@ -88,8 +88,8 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary"
-                                    data-dismiss="modal">{{ __('Close') }}</button>
-                                <button type="submit" class="btn btn-primary">{{ __('Send') }}</button>
+                                    data-dismiss="modal">{{ __('admin.Close') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('admin.Send') }}</button>
                             </div>
                         </form>
                     </div>

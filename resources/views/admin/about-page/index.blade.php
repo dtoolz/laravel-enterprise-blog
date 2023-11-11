@@ -4,14 +4,14 @@
 @section('content')
     <div class="section">
         <div class="section-header">
-            <h1>{{ __('About Page') }}</h1>
+            <h1>{{ __('admin.About Page') }}</h1>
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('Modify About Page Content') }}</h4>
+                <h4>{{ __('admin.Modify About Page Content') }}</h4>
                 <div class="card-header-action">
                     <a href="{{ route('admin.category.create') }}" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> {{ __('Create') }}
+                        <i class="fas fa-plus"></i> {{ __('admin.Create') }}
                     </a>
                 </div>
             </div>
@@ -37,11 +37,11 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
-                                        <label for="">{{ __('Category Section one') }}</label>
+                                        <label for="">{{ __('admin.Category Section one') }}</label>
                                         <textarea name="content" class="summernote-{{ $language->lang }}" id="" cols="30" rows="10">{!! @$about->content !!}</textarea>
                                         <input type="hidden" name="language" value="{{ $language->lang }}">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('admin.Save') }}</button>
                                 </form>
                             </div>
                         </div>

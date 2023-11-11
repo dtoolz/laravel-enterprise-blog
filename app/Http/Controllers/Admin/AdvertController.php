@@ -60,7 +60,7 @@ class AdvertController extends Controller
             ]
         );
 
-        toast(__('Updated Successfully'), 'success');
+        toast(__('admin.Updated Successfully'), 'success');
 
         return redirect()->back();
     }

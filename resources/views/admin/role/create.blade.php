@@ -3,17 +3,17 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ __('Role and Permission') }}</h1>
+            <h1>{{ __('admin.Role and Permission') }}</h1>
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('Create Role/Permission') }}</h4>
+                <h4>{{ __('admin.Create Role/Permission') }}</h4>
             </div>
             <div class="card-body">
                 <form action="{{ route('admin.role.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="">{{ __('Role Name') }}</label>
+                        <label for="">{{ __('admin.Role Name') }}</label>
                         <input name="role" type="text" class="form-control">
                         @error('role')
                             <p class="text-danger">{{ $message }}</p>
@@ -38,7 +38,7 @@
                         </div>
                         <hr>
                     @endforeach
-                    <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ __('admin.Create') }}</button>
                 </form>
             </div>
         </div>

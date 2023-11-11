@@ -35,7 +35,7 @@ class AdminUpdatePasswordRequest extends FormRequest
        {
             if(!Hash::check($this->current_password, Auth::guard('admin')->user()->password))
             {
-               $validator->errors()->add('current_password', __('Previous password does not match'));
+               $validator->errors()->add('current_password', __('frontend.Previous password does not match'));
             }
        });
     }

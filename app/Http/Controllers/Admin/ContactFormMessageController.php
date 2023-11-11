@@ -41,7 +41,7 @@ class ContactFormMessageController extends Controller
             $setReplied->replied = 1;
             $setReplied->save();
 
-            toast(__('Mail Sent Successfully'), 'success');
+            toast(__('admin.Mail Sent Successfully'), 'success');
 
             return redirect()->back();
         } catch (\Throwable $th) {

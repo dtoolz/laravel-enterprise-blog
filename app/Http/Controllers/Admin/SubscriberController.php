@@ -40,7 +40,7 @@ class SubscriberController extends Controller
         /** Send mails */
         Mail::to($subscribers)->send(new Newsletter($request->subject, $request->message));
 
-        toast(__('Mail sent successfully!'), 'success');
+        toast(__('admin.Mail sent successfully!'), 'success');
 
         return redirect()->back();
     }
@@ -52,6 +52,6 @@ class SubscriberController extends Controller
     {
         Subscriber::findOrFail($id)->delete();
 
-        return response(['status' => 'success', 'message' => __('Deleted Successfully!')]);
+        return response(['status' => 'success', 'message' => __('admin.Deleted Successfully!')]);
     }
 }

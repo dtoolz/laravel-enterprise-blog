@@ -20,10 +20,10 @@
                     <ul class="breadcrumbs bg-light mb-4">
                         <li class="breadcrumbs__item">
                             <a href="{{ url('/') }}" class="breadcrumbs__url">
-                                <i class="fa fa-home"></i> {{ __('Home') }}</a>
+                                <i class="fa fa-home"></i> {{ __('frontend.Home') }}</a>
                         </li>
                         <li class="breadcrumbs__item breadcrumbs__item--current">
-                            {{ __('News') }}
+                            {{ __('frontend.News') }}
                         </li>
                     </ul>
                     <!-- end breadcrumb -->
@@ -41,7 +41,7 @@
                         <div class="wrap__article-detail-info">
                             <ul class="list-inline d-flex flex-wrap justify-content-start">
                                 <li class="list-inline-item">
-                                    {{ __('By') }}
+                                    {{ __('frontend.By') }}
                                     <a href="#">
                                         {{ __($news->author->name) }},
                                     </a>
@@ -53,7 +53,7 @@
                                 </li>
                                 <li class="list-inline-item">
                                     <span class="text-dark text-capitalize">
-                                        {{ __('in') }}
+                                        {{ __('frontend.in') }}
                                     </span>
                                     <a href="#">
                                         {{ $news->category->name }}.
@@ -74,20 +74,20 @@
                                 <div class="total-views-read">
                                     {{ formatHugeNumbers($news->views) }}
                                     @if ($news->views === 1)
-                                        <span>{{ __('view') }}</span>
+                                        <span>{{ __('frontend.view') }}</span>
                                     @else
-                                        <span>{{ __('views') }}</span>
+                                        <span>{{ __('frontend.views') }}</span>
                                     @endif
                                 </div>
 
                                 <ul class="list-inline">
-                                    <span class="share">{{ __('share on') }}:</span>
+                                    <span class="share">{{ __('frontend.share on') }}:</span>
                                     <li class="list-inline-item">
                                         <a class="btn btn-social-o facebook"
                                             href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"
                                             target="_blank">
                                             <i class="fa fa-facebook-f"></i>
-                                            <span>{{ __('facebook') }}</span>
+                                            <span>{{ __('frontend.facebook') }}</span>
                                         </a>
 
                                     </li>
@@ -96,7 +96,7 @@
                                             href="https://twitter.com/intent/tweet?text={{ $news->title }}&url={{ url()->current() }}"
                                             target="_blank">
                                             <i class="fa fa-twitter"></i>
-                                            <span>{{ __('twitter') }}</span>
+                                            <span>{{ __('frontend.twitter') }}</span>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
@@ -104,7 +104,7 @@
                                             href="https://wa.me/?text={{ $news->title }}%20{{ url()->current() }}"
                                             target="_blank">
                                             <i class="fa fa-whatsapp"></i>
-                                            <span>{{ __('whatsapp') }}</span>
+                                            <span>{{ __('frontend.whatsapp') }}</span>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
@@ -112,7 +112,7 @@
                                             href="https://t.me/share/url?url={{ url()->current() }}&text={{ $news->title }}"
                                             target="_blank">
                                             <i class="fa fa-telegram"></i>
-                                            <span>{{ __('telegram') }}</span>
+                                            <span>{{ __('frontend.telegram') }}</span>
                                         </a>
                                     </li>
 
@@ -121,7 +121,7 @@
                                             href="https://www.linkedin.com/shareArticle?mini=true&url={{ url()->current() }}&title={{ $news->title }}"
                                             target="_blank">
                                             <i class="fa fa-linkedin"></i>
-                                            <span>{{ __('linkedin') }}</span>
+                                            <span>{{ __('frontend.linkedin') }}</span>
                                         </a>
                                     </li>
 
@@ -165,7 +165,7 @@
                                     class="img-fluid rounded-circle">
                             </figure>
                             <div class="wrap__profile-author-detail">
-                                <div class="wrap__profile-author-detail-name">{{ __('author') }}</div>
+                                <div class="wrap__profile-author-detail-name">{{ __('frontend.author') }}</div>
                                 <h4>{{ $news->author->name }}</h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis laboriosam ad
                                     beatae itaque ea non
@@ -206,11 +206,11 @@
                     @auth
                         <div id="comments" class="comments-area">
                             @if ($news->comments()->count() == 0)
-                                <h3 class="comments-title">{{ __('No') }} {{ __('Comment') }}:</h3>
+                                <h3 class="comments-title">{{ __('frontend.No') }} {{ __('frontend.Comment') }}:</h3>
                             @elseif ($news->comments()->count() == 1)
-                                <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('Comment') }}:</h3>
+                                <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('frontend.Comment') }}:</h3>
                             @elseif ($news->comments()->count() > 1)
-                                <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('Comments') }}:</h3>
+                                <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('frontend.Comments') }}:</h3>
                             @endif
 
 
@@ -223,7 +223,7 @@
                                                     <img src="{{ asset('frontend/assets/images/placeholder.jpg') }}"
                                                         class="avatar" alt="image">
                                                     <b class="fn">{{ $comment->user->name }}</b>
-                                                    <span class="says">{{ __('says') }}:</span>
+                                                    <span class="says">{{ __('frontend.says') }}:</span>
                                                 </div>
 
                                                 <div class="comment-metadata">
@@ -239,7 +239,7 @@
 
                                             <div class="reply">
                                                 <a href="#" class="comment-reply-link" data-toggle="modal"
-                                                    data-target="#exampleModal-{{ $comment->id }}">{{ __('Reply') }}</a>
+                                                    data-target="#exampleModal-{{ $comment->id }}">{{ __('frontend.Reply') }}</a>
                                                 <span class="delete-msg" data-id="{{ $comment->id }}">
                                                     <i class="fa fa-trash"></i>
                                                 </span>
@@ -255,7 +255,7 @@
                                                                     <img src="{{ asset('frontend/assets/images/placeholder.jpg') }}"
                                                                         class="avatar" alt="image">
                                                                     <b class="fn">{{ $reply->user->name }}</b>
-                                                                    <span class="says">{{ __('says') }}:</span>
+                                                                    <span class="says">{{ __('frontend.says') }}:</span>
                                                                 </div>
 
                                                                 <div class="comment-metadata">
@@ -273,7 +273,7 @@
                                                                 @if ($loop->last)
                                                                     <a href="#" class="comment-reply-link"
                                                                         data-toggle="modal"
-                                                                        data-target="#exampleModal-{{ $comment->id }}">{{ __('Reply') }}</a>
+                                                                        data-target="#exampleModal-{{ $comment->id }}">{{ __('frontend.Reply') }}</a>
                                                                 @endif
                                                                 <span style="margin-left: auto;" class="delete-msg"
                                                                     data-id="{{ $reply->id }}">
@@ -295,7 +295,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">
-                                                            {{ __('Write Your Reply') }}</h5>
+                                                            {{ __('frontend.Write Your Reply') }}</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -312,7 +312,7 @@
                                                             @error('reply')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
-                                                            <button type="submit">{{ __('submit') }}</button>
+                                                            <button type="submit">{{ __('frontend.submit') }}</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -323,12 +323,12 @@
                             </ol>
 
                             <div class="comment-respond">
-                                <h3 class="comment-reply-title">{{ __('Leave a Reply') }}</h3>
+                                <h3 class="comment-reply-title">{{ __('frontend.Leave a Reply') }}</h3>
 
                                 <form action="{{ route('news-comment') }}" method="POST" class="comment-form">
                                     @csrf
                                     <p class="comment-form-comment">
-                                        <label for="comment">{{ __('Comment') }}</label>
+                                        <label for="comment">{{ __('frontend.Comment') }}</label>
                                         <textarea name="comment" id="comment" cols="45" rows="5" maxlength="65525" required="required"></textarea>
                                         <input type="hidden" name="news_id" value="{{ $news->id }}">
                                         <input type="hidden" name="parent_id" value="">
@@ -346,8 +346,8 @@
                     @else
                         <div class="card my-5">
                             <div class="card-body">
-                                <h5 class="p-0">{{ __('Please') }}, <a
-                                        href="{{ route('login') }}">{{ __('Login') }}</a> {{ __('to make a comment') }}
+                                <h5 class="p-0">{{ __('frontend.Please') }}, <a
+                                        href="{{ route('login') }}">{{ __('frontend.Login') }}</a> {{ __('frontend.to make a comment') }}
                                 </h5>
                             </div>
                         </div>
@@ -360,7 +360,7 @@
                             <div class="single_navigation-prev">
                                 @if ($previousPost)
                                     <a href="{{ route('news-details', $previousPost->slug) }}">
-                                        <span>{{ __('previous post') }}</span>
+                                        <span>{{ __('frontend.previous post') }}</span>
                                         {!! truncate($previousPost->title) !!}
                                     </a>
                                 @endif
@@ -370,7 +370,7 @@
                             <div class="single_navigation-next text-left text-md-right">
                                 @if ($nextPost)
                                     <a href="{{ route('news-details', $nextPost->slug) }}">
-                                        <span>{{ __('next post') }}</span>
+                                        <span>{{ __('frontend.next post') }}</span>
                                         {!! truncate($nextPost->title) !!}
                                     </a>
                                 @endif
@@ -394,7 +394,7 @@
                     <div class="related-article">
                         @if (count($relatedPosts) > 0)
                             <h4>
-                                {{ __('you may also like') }}
+                                {{ __('frontend.you may also like') }}
                             </h4>
 
                             <div class="article__entry-carousel-three">
@@ -412,7 +412,7 @@
                                                 <ul class="list-inline">
                                                     <li class="list-inline-item">
                                                         <span class="text-primary">
-                                                            {{ __('by') }}{{ $post->author->name }}
+                                                            {{ __('frontend.by') }}{{ $post->author->name }}
                                                         </span>
                                                     </li>
                                                     <li class="list-inline-item">
@@ -478,7 +478,7 @@
                                                             <ul class="list-inline">
                                                                 <li class="list-inline-item">
                                                                     <span class="text-primary">
-                                                                        {{ __('by') }} {{ $news->author->name }}
+                                                                        {{ __('frontend.by') }} {{ $news->author->name }}
                                                                     </span>
                                                                 </li>
                                                                 <li class="list-inline-item">
@@ -517,7 +517,7 @@
                                                 <ul class="list-inline">
                                                     <li class="list-inline-item">
                                                         <span class="text-primary">
-                                                            {{ __('by') }} {{ $news->author->name }}
+                                                            {{ __('frontend.by') }} {{ $news->author->name }}
                                                         </span>
                                                     </li>
                                                     <li class="list-inline-item">
@@ -537,7 +537,7 @@
                                                 </p>
                                                 <a href="{{ route('news-details', $news->slug) }}"
                                                     class="btn btn-outline-primary mb-4 text-capitalize">
-                                                    {{ __('Read More') }}
+                                                    {{ __('frontend.Read More') }}
                                                 </a>
                                             </div>
                                         </div>
@@ -548,7 +548,7 @@
 
                         <!-- social media -->
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">{{ __('stay connected') }}</h4>
+                            <h4 class="border_section">{{ __('frontend.stay connected') }}</h4>
                             <!-- widget Social media -->
                             <div class="wrap__social__media">
                                 @foreach ($socialCounts as $socialCount)
@@ -572,7 +572,7 @@
                         <!-- End social media -->
 
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">{{ __('tags') }}</h4>
+                            <h4 class="border_section">{{ __('frontend.tags') }}</h4>
                             <div class="blog-tags p-0">
                                 <ul class="list-inline">
                                     @foreach ($mostCommonTags as $tag)
@@ -587,20 +587,20 @@
                         </aside>
 
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">{{ __('newsletter') }}</h4>
+                            <h4 class="border_section">{{ __('frontend.newsletter') }}</h4>
                             <!-- Form Subscribe -->
                             <div class="widget__form-subscribe bg__card-shadow">
                                 <h6>
-                                    {{ __('The most important world news and events of the day') }}.
+                                    {{ __('frontend.The most important world news and events of the day') }}.
                                 </h6>
-                                <p><small>{{ __('Get daily newsletter on your inbox') }}.</small></p>
+                                <p><small>{{ __('frontend.Get daily newsletter on your inbox') }}.</small></p>
                                 <form action="" class="newsletter-form">
                                     <div class="input-group ">
                                         <input type="text" class="form-control" name="email"
                                             placeholder="Your email address">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary newsletter-button"
-                                                type="submit">{{ __('subscribe') }}</button>
+                                                type="submit">{{ __('frontend.subscribe') }}</button>
                                         </div>
                                     </div>
                                 </form>
@@ -609,7 +609,7 @@
 
                         @if ($advert->side_bar_advert_status == 1)
                             <aside class="wrapper__list__article">
-                                <h4 class="border_section">{{ __('Advertisement') }}</h4>
+                                <h4 class="border_section">{{ __('frontend.Advertisement') }}</h4>
                                 <a href="{{ $advert->side_bar_advert_url }}">
                                     <figure>
                                         <img src="{{ asset($advert->side_bar_advert) }}" alt="" class="img-fluid">
@@ -618,7 +618,7 @@
                             </aside>
                         @endif
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">{{ __('sign up') }}</button>
+                            <button class="btn btn-primary" type="button">{{ __('frontend.sign up') }}</button>
                         </div>
 
                     </div>
@@ -636,13 +636,13 @@
                 e.preventDefault();
                 let id = $(this).data('id');
                 Swal.fire({
-                    title: '{{ __('Are you sure?') }}',
-                    text: '{{ __('You would not be able to revert this!') }}',
+                    title: '{{ __('frontend.Are you sure?') }}',
+                    text: '{{ __('frontend.You would not be able to revert this!') }}',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: '{{ __('Yes, delete it!') }}'
+                    confirmButtonText: '{{ __('frontend.Yes, delete it!') }}'
                 }).then((result) => {
                     if (result.isConfirmed) {
 

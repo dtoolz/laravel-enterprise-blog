@@ -4,14 +4,14 @@
 @section('content')
     <div class="section">
         <div class="section-header">
-            <h1>{{ __('Roles and Permission') }}</h1>
+            <h1>{{ __('admin.Roles and Permission') }}</h1>
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('Assign Roles/Permission') }}</h4>
+                <h4>{{ __('admin.Assign Roles/Permission') }}</h4>
                 <div class="card-header-action">
                     <a href="{{ route('admin.role.create') }}" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> {{ __('Create') }}
+                        <i class="fas fa-plus"></i> {{ __('admin.Create') }}
                     </a>
                 </div>
             </div>
@@ -23,9 +23,9 @@
                                 <th class="text-center">
                                     #
                                 </th>
-                                <th>{{ __('Role Name') }}</th>
-                                <th>{{ __('Permissions') }}</th>
-                                <th>{{ __('Action') }}</th>
+                                <th>{{ __('admin.Role Name') }}</th>
+                                <th>{{ __('admin.Permissions') }}</th>
+                                <th>{{ __('admin.Action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,7 +38,7 @@
                                         <span class="badge bg-primary text-light">{{ $permission->name }}</span>
                                     @endforeach
                                     @if ($role->name === 'Super Admin')
-                                    <span class="badge bg-success text-light">{{ __('All Permissions') }} *</span>
+                                    <span class="badge bg-success text-light">{{ __('admin.All Permissions') }} *</span>
                                     @endif
                                 </td>
                                 <td>

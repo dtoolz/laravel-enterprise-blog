@@ -348,10 +348,10 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <p>{{ __('Hello,') }}</p>
-                        <p>{{ __('These are your login credentials') }}</p>
-                        <p>{{ __('Email') }}: {{ $mail }}</p>
-                        <p>{{ __('Password') }}: {{ $password }}</p>
+                        <p>{{ __('frontend.Hello') }},</p>
+                        <p>{{ __('frontend.These are your login credentials') }}</p>
+                        <p>{{ __('frontend.Email') }}: {{ $mail }}</p>
+                        <p>{{ __('frontend.Password') }}: {{ $password }}</p>
                       </td>
                     </tr>
                   </table>

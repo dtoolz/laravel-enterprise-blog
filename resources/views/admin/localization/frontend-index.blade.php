@@ -32,7 +32,7 @@
                                             <form method="POST" action="{{ route('admin.extract-localization-string') }}">
                                                 @csrf
                                                 <input type="hidden" name="directory"
-                                                    value="{{ resource_path('views/frontend') }}">
+                                                    value="{{ resource_path('views/frontend') }},{{ app_path('Http/Controllers/Frontend') }},{{ resource_path('views/mail') }},{{ resource_path('views/auth') }}">
                                                 <input type="hidden" name="language_code" value="{{ $language->lang }}">
                                                 <input type="hidden" name="file_name" value="frontend">
                                                 <button type="submit"
@@ -52,7 +52,6 @@
                                 </div>
                             </div>
 
-<<<<<<< HEAD
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped" id="table-{{ $language->lang }}">
@@ -96,20 +95,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-=======
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped" id="table-{{ $language->lang }}">
-                                    <thead>
-                                        <tr>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
-                                </table>
->>>>>>> parent of af8e42d (showing contents of the generated files that contains the localization strings on the admin panel)
                             </div>
                         </div>
                     @endforeach

@@ -98,7 +98,7 @@ class LocalizationController extends Controller
 
         $response = Http::withHeaders([
             'X-RapidAPI-Host' => 'microsoft-translator-text.p.rapidapi.com',
-            'X-RapidAPI-Key' => '',
+            'X-RapidAPI-Key' => env('TRANSLATION_KEY'),
             'content-type' => 'application/json',
         ])->post("https://microsoft-translator-text.p.rapidapi.com/translate?to%5B0%5D=$languageCode&api-version=3.0&profanityAction=NoAction&textType=plain", [
             [

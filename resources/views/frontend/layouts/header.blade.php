@@ -7,7 +7,7 @@
         <div class="container ">
             <div class="row">
                 <div class="col-sm-6 col-md-8">
-                    <div class="topbar-left topbar-right d-flex">
+                    <div class="topbar-left topbar-right d-flex mt-1">
                         <ul class="topbar-sosmed p-0">
                             @foreach ($socialLinks as $socialLink)
                                 <li>
@@ -33,8 +33,28 @@
                         </div>
 
                         <ul class="topbar-link">
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="register.html">Register</a></li>
+                            @if (!auth()->check())
+                                <li><a href="{{ route('login') }}">{{ __('frontend.Login') }}</a></li>
+                                <li><a href="{{ route('register') }}">{{ __('frontend.Register') }}</a></li>
+                            @else
+                                <li class="dropdown"><a href="#" data-toggle="dropdown"
+                                        class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                        <div class="d-sm-none d-lg-inline-block">{{ __('frontend.Hi') }},
+                                            {{ auth()->guard('web')->user()->name }}</div>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <a href="#"
+                                                onclick="event.preventDefault();
+                                        this.closest('form').submit();"
+                                                class="dropdown-item has-icon text-secondary">
+                                                <i class="fas fa-sign-out-alt"></i> {{ __('frontend.Logout') }}
+                                            </a>
+                                        </form>
+                                    </div>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -63,23 +83,25 @@
                 <div class="collapse navbar-collapse justify-content-between" id="main_nav99">
                     <ul class="navbar-nav ml-auto ">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html">home</a>
+                            <a class="nav-link active" href="index.html">{{ __('frontend.home') }}</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ route('about') }}">about</a>
+                            <a class="nav-link" href="{{ route('about') }}">{{ __('frontend.about') }}</a>
                         </li>
                         <li class="nav-item dropdown has-megamenu">
-                            <a class="nav-link" href="blog.html">blog </a>
+                            <a class="nav-link" href="blog.html">{{ __('frontend.blog') }} </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Pages </a>
+                            <a class="nav-link dropdown-toggle" href="#"
+                                data-toggle="dropdown">{{ __('frontend.Pages') }}</a>
                             <ul class="dropdown-menu animate fade-up">
-                                <li><a class="dropdown-item icon-arrow" href="blog_details.html"> Blog single detail
-                                    </a></li>
+                                <li><a class="dropdown-item icon-arrow"
+                                        href="blog_details.html">{{ __('frontend.Blog single detail') }}</a></li>
                                 <li><a class="dropdown-item" href="404.html"> 404 Error </a>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}"> contact </a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                href="{{ route('contact') }}">{{ __('frontend.contact') }}</a></li>
                     </ul>
 
 

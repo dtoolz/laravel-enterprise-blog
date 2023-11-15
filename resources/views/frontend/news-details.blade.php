@@ -165,38 +165,9 @@
                                     class="img-fluid rounded-circle">
                             </figure>
                             <div class="wrap__profile-author-detail">
-                                <div class="wrap__profile-author-detail-name">{{ __('frontend.author') }}</div>
+                                <div class="wrap__profile-author-detail-name mt-2">Author</div>
                                 <h4>{{ $news->author->name }}</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis laboriosam ad
-                                    beatae itaque ea non
-                                    placeat officia ipsum praesentium! Ullam?</p>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <a href="#" class="btn btn-social btn-social-o facebook ">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#" class="btn btn-social btn-social-o twitter ">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#" class="btn btn-social btn-social-o instagram ">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#" class="btn btn-social btn-social-o telegram ">
-                                            <i class="fa fa-telegram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#" class="btn btn-social btn-social-o linkedin ">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <p class="text-lowercase">{{ $news->author->name }} {{ __('frontend.is a registered') }}&nbsp;{{ $news->author->getRoleNames()->first() }}&nbsp;{{ __("frontend.on this platform with relevant experience on writing of articles, journals and publications which are helpful to people globally") }}.</p>
                             </div>
                         </div>
                     </div>
@@ -553,9 +524,9 @@
                             <div class="wrap__social__media">
                                 @foreach ($socialCounts as $socialCount)
                                     <a href="{{ $socialCount->url }}" target="_blank">
-                                        <div class="social__media__widget mt-2"
+                                        <div class="social__media__widget p-2 m-1"
                                             style="background-color:{{ $socialCount->color }}">
-                                            <span class="social__media__widget-icon">
+                                            <span class="social__media__widget-icon ml-1">
                                                 <i class="{{ $socialCount->icon }}"></i>
                                             </span>
                                             <span class="social__media__widget-counter">

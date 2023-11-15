@@ -1,5 +1,9 @@
 @php
     $languages = \App\Models\Language::where('status', 1)->get();
+
+    $navCategories = \App\Models\Category::where(['status' => 1, 'language' => getLanguage(), 'show_at_nav' => 1])->get();
+
+    $categories = \App\Models\Category::where(['status' => 1, 'language' => getLanguage(), 'show_at_nav' => 0])->get();
 @endphp
 <header class="bg-light">
     <!-- Navbar  Top-->
@@ -82,23 +86,29 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="main_nav99">
                     <ul class="navbar-nav ml-auto ">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="index.html">{{ __('frontend.home') }}</a>
-                        </li>
+                        @foreach ($navCategories as $category)
+                            <li class="nav-item">
+                                <a class="nav-link active"
+                                    href="{{ route('news', ['category' => $category->slug]) }}">{{ $category->name }}</a>
+                            </li>
+                        @endforeach
+
+                        @if (count($categories) > 0)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                    {{ __('frontend.More') }} </a>
+                                <ul class="dropdown-menu animate fade-up">
+                                    @foreach ($categories as $category)
+                                        <li><a class="dropdown-item icon-arrow"
+                                                href="{{ route('news', ['category' => $category->slug]) }}">
+                                                {{ $category->name }}
+                                            </a></li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @endif
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="{{ route('about') }}">{{ __('frontend.about') }}</a>
-                        </li>
-                        <li class="nav-item dropdown has-megamenu">
-                            <a class="nav-link" href="blog.html">{{ __('frontend.blog') }} </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#"
-                                data-toggle="dropdown">{{ __('frontend.Pages') }}</a>
-                            <ul class="dropdown-menu animate fade-up">
-                                <li><a class="dropdown-item icon-arrow"
-                                        href="blog_details.html">{{ __('frontend.Blog single detail') }}</a></li>
-                                <li><a class="dropdown-item" href="404.html"> 404 Error </a>
-                            </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link"
                                 href="{{ route('contact') }}">{{ __('frontend.contact') }}</a></li>
@@ -148,17 +158,20 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="widget__form-search-bar  ">
-                        <div class="row no-gutters">
-                            <div class="col">
-                                <input class="form-control border-secondary border-right-0 rounded-0" value=""
-                                    placeholder="Search">
+                        <form action="{{ route('news') }}" method="GET">
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <input class="form-control border-secondary border-right-0 rounded-0" value=""
+                                        placeholder="Search" type="search" name="search">
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit"
+                                        class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-auto">
-                                <button class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -167,35 +180,35 @@
                 <div class="modal-body">
                     <nav class="list-group list-group-flush">
                         <ul class="navbar-nav ">
-                            <li class="nav-item">
-                                <a class="nav-link active text-dark" href="index.html"> Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="about-us.html"> About </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="blog.html">Blog </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active dropdown-toggle  text-dark" href="#"
-                                    data-toggle="dropdown">Pages </a>
-                                <ul class="dropdown-menu dropdown-menu-left">
-                                    <li><a class="dropdown-item" href="blog_details.html">Blog details</a></li>
-                                    <li><a class="dropdown-item" href="404.html"> 404 Error</a></li>
+                            @foreach ($navCategories as $category)
+                                <li class="nav-item">
+                                    <a class="nav-link active text-dark"
+                                        href="{{ route('news', ['category' => $category->slug]) }}">
+                                        {{ $category->name }}</a>
+                                </li>
+                            @endforeach
 
-                                </ul>
+                            @if (count($categories) > 0)
+                                <li class="nav-item">
+                                    <a class="nav-link active dropdown-toggle  text-dark" href="#"
+                                        data-toggle="dropdown">More </a>
+                                    <ul class="dropdown-menu dropdown-menu-left">
+                                        @foreach ($categories as $category)
+                                            <li><a class="dropdown-item"
+                                                    href="{{ route('news', ['category' => $category->slug]) }}">{{ $category->name }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endif
+                            <li class="nav-item"><a class="nav-link  text-dark" href="{{ route('about') }}">
+                                    {{ __('frontend.About') }} </a>
                             </li>
-                            <li class="nav-item"><a class="nav-link  text-dark" href="contact.html"> Contact </a>
+                            <li class="nav-item"><a class="nav-link  text-dark" href="{{ route('contact') }}">
+                                    {{ __('frontend.contact') }} </a>
                             </li>
                         </ul>
-
                     </nav>
-                </div>
-                <div class="modal-footer">
-                    <p>© 2020 <a href="https://websolutionus.com/.com">WebSolutionUS</a>
-                        -
-                        Premium template news, blog & magazine &amp;
-                        magazine theme by <a href="https://websolutionus.com/.com">websolutionus.com</a></p>
                 </div>
             </div>
         </div>

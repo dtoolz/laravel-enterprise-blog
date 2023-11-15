@@ -60,6 +60,11 @@ class HomeController extends Controller
                 ->orderBy('id', 'DESC')
                 ->take(4)
                 ->get();
+        } else {
+            $categorySectionOne = collect();
+            $categorySectionTwo = collect();
+            $categorySectionThree = collect();
+            $categorySectionFour = collect();
         }
 
         $mostViewedPosts = News::GetActiveNews()->GetLocalizedLanguage()

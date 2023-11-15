@@ -96,6 +96,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     Route::put('general-setting', [SettingController::class, 'updateGeneralSetting'])->name('general-setting.update');
     Route::put('seo-setting', [SettingController::class, 'updateSeoSetting'])->name('seo-setting.update');
     Route::put('appearance-setting', [SettingController::class, 'updateAppearanceSetting'])->name('appearance-setting.update');
+    Route::put('microsoft-api-setting', [SettingController::class, 'updateMicrosoftApiSetting'])->name('microsoft-api-setting.update');
+
 
     //Role and Permissions Routes
     Route::get('role', [RolePermissionController::class, 'index'])->name('role.index');

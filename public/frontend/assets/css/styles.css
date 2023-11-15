@@ -18015,7 +18015,12 @@ body.offcanvas-active {
     color: var(--colorPrimary) !important;
 }
 
-
+.list-inline-item-contact a {
+    background-color: var(--colorPrimary) !important;
+}
+.list-inline-item-contact a i {
+    color: #fff !important;
+}
 
 
 /*  */

@@ -7,6 +7,7 @@ use App\Http\Requests\AdminCategoryCreateRequest;
 use App\Http\Requests\AdminCategoryUpdateRequest;
 use App\Models\Category;
 use App\Models\Language;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -95,6 +96,10 @@ class CategoryController extends Controller
     {
         try{
            $category = Category::findOrFail($id);
+           $news = News::where('category_id', $category->id)->get();
+            foreach($news as $item){
+                $item->tags()->delete();
+            }
            $category->delete();
            return response(['status' => 'success', 'message' => __('admin.Deleted Successfully')]);
         } catch(\Throwable $th){

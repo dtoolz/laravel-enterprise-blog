@@ -16,7 +16,7 @@
                   <div class="row">
                       <div class="col-9 text-center mx-auto">
                         <a href="{{ $advert->home_top_bar_advert_url }}">
-                            <img src="{{ asset($advert->home_top_bar_advert) }}" class="img-fluid" alt="adds">
+                            <img src="{{ asset(@$advert->home_top_bar_advert) }}" class="img-fluid" alt="adds">
                         </a>
                       </div>
                   </div>

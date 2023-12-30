@@ -150,11 +150,11 @@
         @endforeach
 
         $(document).ready(function() {
-            $('.modal_btn').on('click', function() {
-                let languageCode = $(this).data('languagecode');
-                let key = $(this).data('key');
-                let value = $(this).data('value');
-                let filename = $(this).data('filename');
+            $('body').on('click', '.modal_btn', function() {
+                let languageCode = $(this).attr('data-languagecode');
+                let key = $(this).attr('data-key');
+                let value = $(this).attr('data-value');
+                let filename = $(this).attr('data-filename');
 
                 $('input[name="language_code"]').val("")
                 $('input[name="key"]').val("")

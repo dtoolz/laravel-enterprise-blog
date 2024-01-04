@@ -167,7 +167,9 @@
                             <div class="wrap__profile-author-detail">
                                 <div class="wrap__profile-author-detail-name mt-2">Author</div>
                                 <h4>{{ $news->author->name }}</h4>
-                                <p class="text-lowercase">{{ $news->author->name }} {{ __('frontend.is a registered') }}&nbsp;{{ $news->author->getRoleNames()->first() }}&nbsp;{{ __("frontend.on this platform with relevant experience on writing of articles, journals and publications which are helpful to people globally") }}.</p>
+                                <p class="text-lowercase">{{ $news->author->name }}
+                                    {{ __('frontend.is a registered') }}&nbsp;{{ $news->author->getRoleNames()->first() }}&nbsp;{{ __('frontend.on this platform with relevant experience on writing of articles, journals and publications which are helpful to people globally') }}.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -181,7 +183,8 @@
                             @elseif ($news->comments()->count() == 1)
                                 <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('frontend.Comment') }}:</h3>
                             @elseif ($news->comments()->count() > 1)
-                                <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('frontend.Comments') }}:</h3>
+                                <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('frontend.Comments') }}:
+                                </h3>
                             @endif
 
 
@@ -211,9 +214,11 @@
                                             <div class="reply">
                                                 <a href="#" class="comment-reply-link" data-toggle="modal"
                                                     data-target="#exampleModal-{{ $comment->id }}">{{ __('frontend.Reply') }}</a>
-                                                <span class="delete-msg" data-id="{{ $comment->id }}">
-                                                    <i class="fa fa-trash"></i>
-                                                </span>
+                                                @if (Auth()->user()->id == $comment->user_id)
+                                                    <span class="delete-msg" data-id="{{ $comment->id }}">
+                                                        <i class="fa fa-trash"></i>
+                                                    </span>
+                                                @endif
                                             </div>
                                         </aside>
                                         @if ($comment->reply()->count() > 0)
@@ -246,10 +251,12 @@
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModal-{{ $comment->id }}">{{ __('frontend.Reply') }}</a>
                                                                 @endif
-                                                                <span style="margin-left: auto;" class="delete-msg"
-                                                                    data-id="{{ $reply->id }}">
-                                                                    <i class="fa fa-trash"></i>
-                                                                </span>
+                                                                @if (Auth()->user()->id == $reply->user_id)
+                                                                    <span style="margin-left: auto;" class="delete-msg"
+                                                                        data-id="{{ $reply->id }}">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </span>
+                                                                @endif
                                                             </div>
                                                         </aside>
                                                     </li>
@@ -318,7 +325,8 @@
                         <div class="card my-5">
                             <div class="card-body">
                                 <h5 class="p-0">{{ __('frontend.Please') }}, <a
-                                        href="{{ route('login') }}">{{ __('frontend.Login') }}</a> {{ __('frontend.to make a comment') }}
+                                        href="{{ route('login') }}">{{ __('frontend.Login') }}</a>
+                                    {{ __('frontend.to make a comment') }}
                                 </h5>
                             </div>
                         </div>
@@ -416,7 +424,7 @@
                             <div class="mb-4">
                                 <div class="widget__form-search-bar  ">
                                     <form action="{{ route('news') }}" method="GET">
-                                    <div class="row no-gutters">
+                                        <div class="row no-gutters">
                                             <div class="col">
                                                 <input class="form-control border-secondary border-right-0 rounded-0"
                                                     value="" name="search" type="search" placeholder="Search">
@@ -427,8 +435,8 @@
                                                     <i class="fa fa-search"></i>
                                                 </button>
                                             </div>
-                                    </div>
-                                </form>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <div class="wrapper__list__article-small">
@@ -583,7 +591,8 @@
                                 <h4 class="border_section">{{ __('frontend.Advertisement') }}</h4>
                                 <a href="{{ $advert->side_bar_advert_url }}">
                                     <figure>
-                                        <img src="{{ asset($advert->side_bar_advert) }}" alt="" class="img-fluid">
+                                        <img src="{{ asset($advert->side_bar_advert) }}" alt=""
+                                            class="img-fluid">
                                     </figure>
                                 </a>
                             </aside>

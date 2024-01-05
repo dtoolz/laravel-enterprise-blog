@@ -2,9 +2,9 @@
 
 - [See Live Demo](https://globalnewsportal.online).
 
-This is an enterprise level blog web application built with bootstrap 5, jquery, laravel mvc and mysql.
-This is blog web application contains muilti level admin roles (authorization), authentication, multi language translation, seo and so much more.
-Some features of the blog web application are listed below.
+<p>This is an enterprise level blog web application built with bootstrap 5, jquery, laravel mvc and mysql.</p>
+<p>This blog web application contains muilti level admin roles (authorization), authentication, multi language translation, seo and so much more.</p>
+<p>Some features of the blog web application are listed below.</p>
 
 <p align="center"><img src="https://dailywebflow.tech/img/bp1.JPG" width="800" alt="blog portal"></p>
 
@@ -16,24 +16,24 @@ Some features of the blog web application are listed below.
 
 ## ADMIN PANEL FEATURES:
 
-Admin can change logo, favicon, colors and images on the entire home page dynamically
-Admin can add and translate a new language automatically
-Admin can create other admins and authorize with roles like writer, publisher, editor etc.
-Admin can create, edit and delete blog posts.
-Admin can send email to subscribers
-Admin can change his own photo, information and password
-Admin can manage advertisements across the website
+* Admin can change logo, favicon, colors and images on the entire home page dynamically
+* Admin can add and translate a new language automatically
+* Admin can create other admins and authorize with roles like writer, publisher, editor etc.
+* Admin can create, edit and delete blog posts.
+* Admin can send email to subscribers
+* Admin can change his own photo, information and password
+* Admin can manage advertisements across the website
 
 ## USER FEATURES:
 
-Users can create accounts for free
-Users can search for blog posts
-Users can comment and reply other users
-Users can delete their own comments
-Users can share blog posts to socail media
-Users can search for blog posts with tags
-Users and guests can subscribe to newsletter
-Users can change to prefferred language across the whole website
+* Users can create accounts for free
+* Users can search for blog posts
+* Users can comment and reply other users
+* Users can delete their own comments
+* Users can share blog posts to socail media
+* Users can search for blog posts with tags
+* Users and guests can subscribe to newsletter
+* Users can change to prefferred language across the whole website
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 

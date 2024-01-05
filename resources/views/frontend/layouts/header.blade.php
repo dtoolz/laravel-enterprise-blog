@@ -207,6 +207,28 @@
                             <li class="nav-item"><a class="nav-link  text-dark" href="{{ route('contact') }}">
                                     {{ __('frontend.contact') }} </a>
                             </li>
+                            @if (!auth()->check())
+                                <li class="nav-item"><a class="nav-link  text-dark" href="{{ route('login') }}">{{ __('frontend.Login') }}</a></li>
+                                <li class="nav-item"><a class="nav-link  text-dark" href="{{ route('register') }}">{{ __('frontend.Register') }}</a></li>
+                            @else
+                                <li class="dropdown"><a href="#" data-toggle="dropdown"
+                                        class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                        <div class="d-lg-none d-sm-inline-block">{{ __('frontend.Hi') }},
+                                            {{ auth()->guard('web')->user()->name }}</div>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <a href="#"
+                                                onclick="event.preventDefault();
+                                        this.closest('form').submit();"
+                                                class="dropdown-item has-icon text-secondary">
+                                                <i class="fas fa-sign-out-alt"></i> {{ __('frontend.Logout') }}
+                                            </a>
+                                        </form>
+                                    </div>
+                                </li>
+                            @endif
                         </ul>
                     </nav>
                 </div>

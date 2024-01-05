@@ -1,66 +1,39 @@
-## STANDARD JOB PORTAL WEB APPLICATION
+## Enterprise Blog Web Application
 
-- [See Live Demo](https://standardjobportal.site).
+- [See Live Demo](https://globalnewsportal.online).
 
-This is a standard job portal web application built with bootstrap 5, jquery, laravel mvc and mysql.
-This job portal web application consists of three types users:- the candidates, the companies and the admin.
-Features includes stripe and paypal payment integration, authentication, dynamic contents from the admin panel and so much more, other features on the job portal are listed below.
+This is an enterprise level blog web application built with bootstrap 5, jquery, laravel mvc and mysql.
+This is blog web application contains muilti level admin roles (authorization), authentication, multi language translation, seo and so much more.
+Some features of the blog web application are listed below.
 
-<p align="center"><img src="https://dailywebflow.tech/img/jp1.JPG" width="800" alt="job portal"></p>
-<p align="center"><img src="https://dailywebflow.tech/img/jp2.JPG" width="800" alt="job portal"></p>
-<p align="center"><img src="https://dailywebflow.tech/img/jp3.JPG" width="800" alt="job portal"></p>
-<p align="center"><img src="https://dailywebflow.tech/img/jp4.JPG" width="800" alt="job portal"></p>
+<p align="center"><img src="https://dailywebflow.tech/img/bp1.JPG" width="800" alt="blog portal"></p>
+
+<p align="center"><img src="https://dailywebflow.tech/img/bp2.JPG" width="800" alt="blog portal"></p>
+
+<p align="center"><img src="https://dailywebflow.tech/img/bp3.JPG" width="800" alt="blog portal"></p>
+
+<p align="center"><img src="https://dailywebflow.tech/img/bp4.JPG" width="800" alt="blog portal"></p>
 
 ## ADMIN PANEL FEATURES:
 
-Admin can change logo, favicon etc.
-Admin can change top bar and footer information.
-Admin can control the home page information.
-Admin can create, edit and delete blog categories.
+Admin can change logo, favicon, colors and images on the entire home page dynamically
+Admin can add and translate a new language automatically
+Admin can create other admins and authorize with roles like writer, publisher, editor etc.
 Admin can create, edit and delete blog posts.
-Admin can create, edit and delete testimonials.
 Admin can send email to subscribers
-Admin can see all the company profiles and can delete them
-Admin can see all the candidate profiles and can delete them
 Admin can change his own photo, information and password
-Admin can manage advertisements in job listing and company listing pages
-Admin can create, edit and delete job categories.
-Admin can create, edit and delete job locations.
-Admin can create, edit and delete job experiences.
-Admin can create, edit and delete job types.
-Admin can create, edit and delete company industry.
-Admin can create, edit and delete company size
-Admin can create, edit and delete company location
-Admin can create, edit and delete why choose us section
+Admin can manage advertisements across the website
 
-## COMPANY FEATURES:
+## USER FEATURES:
 
-Company can create account for free
-Company can login and work with forgot password option
-Company can change profile information which includes videos, images and more.
-Company can buy package using PayPal and Stripe
-Company can renew package anytime
-Company can check orders
-Company can update orders
-Company can create, edit and delete jobs
-Company can check candidate/applicants list
-Company can approve or reject candidate applications
-Company can make a job featured
-Company can make a job urgent
-
-## CANDIDATE FEATURES:
-
-Candidate can create account for free
-Candidate can login and work with forgot password option
-Candidate can change profile information
-Candidate can create, edit and delete education
-Candidate can create, edit and delete job experience
-Candidate can create, edit and delete skills
-Candidate can create, edit and delete awards
-Candidate can create, edit and delete resumes
-Candidate can apply to different jobs
-Candidate can bookmark jobs
-Candidate can search for jobs by category, location, title, type etc.
+Users can create accounts for free
+Users can search for blog posts
+Users can comment and reply other users
+Users can delete their own comments
+Users can share blog posts to socail media
+Users can search for blog posts with tags
+Users and guests can subscribe to newsletter
+Users can change to prefferred language across the whole website
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
